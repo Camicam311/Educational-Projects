@@ -1,0 +1,74 @@
+Links for on risk of infant mortality with respect to birthweight:
+
+1. http://www.ncbi.nlm.nih.gov/pubmed/3880598 - Says neopnatal mortality with low bwt is much more likely than infant mortality with low bwt. My data has no neonatal deaths so chances of babies dying neonatal due to smokers is likely much higher. [cite]
+
+2. Low bwt contributes to 60-80% of all neonatal deaths [cite] - http://www.who.int/maternal_child_adolescent/topics/newborn/care_of_preterm/en/
+
+3. (BEST EXAMPLE) Link between infant mortality and bwt - http://ije.oxfordjournals.org/content/16/2/239.full.pdf Study shows 11x more likely to die if bwt [cite] <= 2000g = 70oz  than a bwt of >= 3500g = 123oz
+
+4. low bwt mean higher risk heart disease [use a quote] - http://www.webmd.com/heart-disease/news/20090402/low-birth-weight-linked-to-heart-risk, also state it is common knowledge that low bwt can lead to higher risk of disease
+
+5. low bwt means higher risk for renal disease [use a quote]- http://jasn.asnjournals.org/content/19/1/151.full
+
+
+
+Confounders:
+	1. Poverty Rate in Oakland 1960-1967
+			http://www.theguardian.com/world/blog/2011/oct/26/oakland-police-department-black-community - "Despite passage of the 1960s civil rights legislation that followed the landmark U.S. Supreme Court ruling in Brown v. Board of Education of Topeka (1954), African Americans living in cities throughout North America continued to suffer economic and social inequality. Poverty and reduced public services characterized these urban centres, where residents were subject to poor living conditions, joblessness, chronic health problems, violence, and limited means to change their circumstances. Such conditions contributed to urban uprisings in the 1960s"
+
+			So many African Americans at or below poverty line => increased chance of unhealthy lifestyles (more drug use, higher disease rates, more violence etc... ), which could be counfounding factors in this data set. Although unknown, it could also be possible that many of those on this poverty line could not afford healthcare (sad), and thus reducing the chance of poverty being confounding. 
+
+	2. Rubella 
+		http://www.austincc.edu/microbio/2704j/rub.htm - 
+		"A major rubella pandemic that originated in Europe in the early 1960s reached the USA in 1964, causing an estimated 12.5 million cases of the disease. The result of this major outbreak was devastating, with 11,000 miscarriages, stillbirths and terminations, and the birth of 20,000 infants with congenital rubella syndrome (CRS).", Amount of this that hit the sample in oakland kaiser plan is unknown but possible this could have been confounding. 
+
+    4. Gestational Age When Born
+    	Given data shows that babies born early have lower bwt, we don't know if baby was born early given data set. 
+    	http://www.ncbi.nlm.nih.gov/pubmed/2301517 - "Smoking lowers birth weight both by decreasing fetal growth and by lowering gestational age at delivery."
+
+The QED: 			
+	In report say that there are also other confounders that could be unknown. So although birthweight is affected it is hard to say how much so the estimated affect is just an estimate since it ignores the confounders. Also state other things that smoking may due to babies other than lower birth weights by citing other reports. Not how report did not discuss fetal death, but that smoking may cause this but this report does not say anything about it (gives some bias). 
+
+
+
+
+	RSTUDIO NOTES:
+	To subset data - http://www.ats.ucla.edu/stat/r/faq/subset_R.htm
+
+
+	The BoxPlot Command (copy pasta)
+
+	The low bwt histogram (smoker and nonsmoker):
+	grid.arrange(smoker_lowbwt_histogram, nonsmoker_lowbwt_histogram, ncol=2)
+
+	Smoker and nonsmoker histograms (smoker and nonsmoker)
+	grid.arrange(smoker_histogram, nonsmoker_histogram, ncol=2)
+
+	Smoker and nonsmoker boxplot <--- USE THIS ONE, The other one doesn't show outliers
+	lowbwt_boxplot <- boxplot(chds_data$bwt~chds_data$smoke, ylab="Birth Weight (oz)", xlab="Non-Smoker=0, Smoker=1, Unknown=9", main="Boxplot Distribution of Smoking and Non-Smoking Mothers")
+
+
+	Notes on Data: 
+
+	For Smoker and NonSmoker QQ Plot 
+	-------------------------------------------------------------------------------------
+	(use qqnorm and line)
+		*Proves data is normally distributed, therefore we can use normal distribution for hypothesis testing and other analysis. 
+
+	For Smoking Affecting Birth Weight Hypothesis Test
+	-------------------------------------------------------------------------------------
+
+	For Smoker and NonSmoker Box Plot
+	-------------------------------------------------------------------------------------
+	COMMAND: lowbwt_boxplot <- boxplot(chds_data$bwt~chds_data$smoke, ylab="Birth Weight (oz)", xlab="Non-Smoker=0, Smoker=1, Unknown=9", main="Boxplot Distribution of Smoking and Non-Smoking Mothers")
+
+		*Anything under about 82 oz for a nonsmoker is an outlier (many of them)
+		*Anything under about 70 oz for a smoker is an outlier (2 of them)
+		*For nonsmoker 1st 25% is btwn 82 and 113oz (113oz from summary), For smoker 1st 25% is between 70oz and 102oz (102oz from summary)
+		*Eyballing nonsmoker boxplot we can see that first 5% of distribution has low bwt 82 < smoker.bwt < 88
+		*Eyeballing smoker boxplot we can see that first 15% of distrubtion has low bwt 70 < smoker.bwt < 88, and that this distribution does reach critical range where around a 11x likelihood of infant mortality may occur for a small portion of the ditribution wheras smoker one doesn't.
+		*Ignore the unknown boxplot
+
+	
+
+

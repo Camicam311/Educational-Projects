@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1424111944999.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "FD08E0FB",
+    "lastKnownWriteTime" : 7741240722073845761,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "videodata",
+        "contentUrl" : "content?title=videodata&file=e5eb0b7172be442eb65f22906c438cd4.htm",
+        "displayedObservations" : 91,
+        "displayedVariables" : 15,
+        "totalObservations" : 91,
+        "variables" : 15
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

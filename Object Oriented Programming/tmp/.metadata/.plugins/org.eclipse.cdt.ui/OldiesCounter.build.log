@@ -1,0 +1,9 @@
+03:07:44 **** Incremental Build of configuration Debug for project OldiesCounter ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\myAssignment.o" "..\\src\\myAssignment.cpp" 
+..\src\myAssignment.cpp: In member function 'void WordFrequencyCounter::countWordFrequency()':
+..\src\myAssignment.cpp:98:38: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+..\src\myAssignment.cpp:99:43: error: could not convert '((WordFrequencyCounter*)this)->WordFrequencyCounter::wordFrequencyMap.std::multimap<_Key, _Tp, _Compare, _Alloc>::find [with _Key = std::basic_string<char>, _Tp = int, _Compare = std::less<std::basic_string<char> >, _Alloc = std::allocator<std::pair<const std::basic_string<char>, int> >, std::multimap<_Key, _Tp, _Compare, _Alloc>::iterator = std::_Rb_tree_iterator<std::pair<const std::basic_string<char>, int> >, std::multimap<_Key, _Tp, _Compare, _Alloc>::key_type = std::basic_string<char>]((*(const key_type*)((WordFrequencyCounter*)this)->WordFrequencyCounter::word_vector.std::vector<_Tp, _Alloc>::operator[] [with _Tp = std::basic_string<char>, _Alloc = std::allocator<std::basic_string<char> >, std::vector<_Tp, _Alloc>::reference = std::basic_string<char>&, std::vector<_Tp, _Alloc>::size_type = unsigned int](((unsigned int)i))))' from 'std::multimap<std::basic_string<char>, int>::iterator {aka std::_Rb_tree_iterator<std::pair<const std::basic_string<char>, int> >}' to 'bool'
+
+03:07:45 Build Finished (took 405ms)
+

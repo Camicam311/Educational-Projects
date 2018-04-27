@@ -1,0 +1,13 @@
+Reminders and Ideas: 
+Try out Picturefill:  http://scottjehl.github.io/picturefill/#examples
+
+-Provide a version with buttons that have click effect. Style like
+buttons on picture. 
+
+-Use reset.css, structure.css and typography.css to style the page. 
+(search online to find a good reset, notify that I did not do that file)
+
+-Do a version with just one set of images if time
+
+-Give it an awesome loading bar and image fade in effect when the page loads. OR be awesome and have images look like they are flying into the page onto their spot and make it from scratch by calculating position vector for each image with an effect of shadowing behind image
+

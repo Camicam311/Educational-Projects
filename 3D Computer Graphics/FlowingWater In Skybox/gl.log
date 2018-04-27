@@ -1,0 +1,54 @@
+creating shader from shaders/skybox.vert...
+ERROR: GL shader index 1 did not compile
+shader info log for GL index 1:
+ERROR: 0:1: '' :  Version number not supported by OGL driver
+ERROR: 0:3: 'in' :  supported in GLSL 1.30 or later 
+ERROR: 0:5: 'out' :  supported in GLSL 1.30 or later 
+
+
+creating shader from shaders/skybox.vert...
+ERROR: GL shader index 1 did not compile
+shader info log for GL index 1:
+ERROR: 0:1: '' :  Version number not supported by OGL driver
+ERROR: 0:3: 'in' :  supported in GLSL 1.30 or later 
+ERROR: 0:5: 'out' :  supported in GLSL 1.30 or later 
+
+
+creating shader from shaders/skybox.vert...
+ERROR: GL shader index 1 did not compile
+shader info log for GL index 1:
+ERROR: 0:1: '' :  Version number not supported by OGL driver
+ERROR: 0:3: 'in' :  supported in GLSL 1.30 or later 
+ERROR: 0:5: 'out' :  supported in GLSL 1.30 or later 
+
+
+creating shader from shaders/skybox.vert...
+ERROR: GL shader index 1 did not compile
+shader info log for GL index 1:
+ERROR: 0:1: '' :  Version number not supported by OGL driver
+ERROR: 0:3: 'in' :  supported in GLSL 1.30 or later 
+ERROR: 0:5: 'out' :  supported in GLSL 1.30 or later 
+
+
+creating shader from shaders/skybox.vert...
+ERROR: GL shader index 1 did not compile
+shader info log for GL index 1:
+ERROR: 0:1: '' :  Version number not supported by OGL driver
+ERROR: 0:3: 'in' :  supported in GLSL 1.30 or later 
+ERROR: 0:5: 'out' :  supported in GLSL 1.30 or later 
+
+
+creating shader from shaders/skybox.frag...
+ERROR: GL shader index 2 did not compile
+shader info log for GL index 2:
+ERROR: 0:1: '' :  Version number not supported by OGL driver
+ERROR: 0:3: 'in' :  supported in GLSL 1.30 or later 
+ERROR: 0:5: 'out' :  supported in GLSL 1.30 or later 
+WARNING: 0:8: 'texture' : function not available in current GLSL version - trying implict argument conversion 
+ERROR: 0:8: 'texture' : no matching overloaded function found - implicit conversion not allowed 
+ERROR: 0:8: 'assign' :  cannot convert from 'const float' to 'FragUserData 4-component vector of float'
+
+
+created programme 3. attaching shaders 1 and 2...
+ERROR: could not link shader programme GL index 3
+program info log for GL index 3:

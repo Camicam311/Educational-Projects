@@ -1,0 +1,74 @@
+/*
+ * main.cpp
+ *
+ *  Author: Joshua Wheeler
+ *  Date: 4/2/2013
+ *  Class: CS 140
+ *  Description: Count the frequency of each word in a given text file
+ */
+#include <stdlib.h>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+#include <fstream>
+
+using namespace std;
+
+class WordFrequencyCounter {
+public:
+	WordFrequencyCounter();
+	void readFileWordsToVector(); //reads all the words in the txt file and stores them all lowercased
+								  //into a vector without punctuation
+	void countWordFrequency(); //count the frequency of words
+	void outputWordFrequency(); //console display of word frequency
+
+private:
+	 vector<string> word_vector = NULL;
+	 multimap<string,int> wordFrequencyCounter = NULL;
+};
+
+
+
+int main() {
+	WordFrequencyCounter wordCounter;
+	wordCounter.readFileWordsToVector();
+	return EXIT_SUCCESS;
+}
+
+void WordFrequencyCounter::readFileWordsToVector(){
+	//Get the filename
+	char* path_to_file;
+	cout << "Enter the file path of the text file to read " << endl;
+	cin >> path_to_file;
+	cout << endl << endl;
+
+	//Open the file
+	ifstream txtFile(path_to_file);
+    txtFile.open(path_to_file, ifstream::in);
+
+    //Read the file character by character
+    int curChar = txtFile.get();
+	while(txtFile.good()) {
+	    if(txtFile.good()) {
+	    	cout << (char) curChar;
+	    	curChar = txtFile.get();
+	    }
+	}
+	//Close the file
+	txtFile.close();
+}
+
+void WordFrequencyCounter::countWordFrequency() {
+	return;
+}
+
+void WordFrequencyCounter::outputWordFrequency() {
+	return;
+}
+
+
+
+
+
+

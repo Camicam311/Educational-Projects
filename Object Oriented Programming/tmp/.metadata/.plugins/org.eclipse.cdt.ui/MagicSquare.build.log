@@ -1,0 +1,7 @@
+19:15:22 **** Rebuild of configuration Debug for project MagicSquare ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\MagicSquare.o" "..\\src\\MagicSquare.cpp" 
+g++ -o MagicSquare.exe "src\\MagicSquare.o" 
+
+19:15:26 Build Finished (took 3s.869ms)
+

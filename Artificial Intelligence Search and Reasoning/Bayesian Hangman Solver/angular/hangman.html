@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html ng-app="hangman">
+<head>
+	<title>CS150: Smart Hangman</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/foundation.min.css">
+	<script type="text/javascript" src="js/angular.min.js"></script> 
+	<script type="text/javascript" src="js/chart.min.js"></script>
+	<style type="text/css">
+	/* ---------------- Alphabet Menu ---------------*/
+		.alphabet-btn-group {
+			width: 600px;
+		}
+
+		.alphabet-btn-group ul, .alphabet-btn-group ul li  {
+			margin: 0;
+			padding:0;
+		}
+
+		.word-container {
+			font-size: 30px;
+		}
+	</style>
+<head>
+<body>
+<!-- Alphabet Btn Menu -->
+<ul class="stack button-group alphabet-btn-group even-8" ng-controller="AlphabetMenuCtrl">
+  <li ng-repeat="letter in alphabet"><a href="#" ng-click="playLetter()" class="small button">{{ letter }}</a></li>
+</ul>
+<!-- End Alphabet Btn Menu -->
+<div class="word-container">
+	T _ E _ _
+</div>
+
+<div style="width: 50%">
+	<!-- Disable Bar Chart For Now 
+	<canvas id="letterProbabilityBarChart" height="450" width="600"></canvas>
+-->
+</div>
+
+
+	<script>
+	var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+	var barChartData = {
+		labels : ["January","February","March","April","May","June","July"],
+		datasets : [
+			{
+				fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,0.8)",
+				highlightFill: "rgba(220,220,220,0.75)",
+				highlightStroke: "rgba(220,220,220,1)",
+				data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+			},
+			{
+				fillColor : "rgba(151,187,205,0.5)",
+				strokeColor : "rgba(151,187,205,0.8)",
+				highlightFill : "rgba(151,187,205,0.75)",
+				highlightStroke : "rgba(151,187,205,1)",
+				data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+			}
+		]
+
+	}
+	/* Disable Bar Chart For Now 
+	window.onload = function(){
+		var ctx = document.getElementById("letterProbabilityBarChart").getContext("2d");
+		window.myBar = new Chart(ctx).Bar(barChartData, {
+			responsive : true
+		});
+	}
+	*/
+
+	</script>
+<script type="text/javascript" src="dict/words.js"></script> 
+
+<script type="text/javascript">
+	var main = angular.module("hangman", ['commons']);
+	 main.factory('letterService', ['$http',function($http) {
+	  var alphabet = ["A", "B", "C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+	  return { 'alphabet': alphabet };
+	}]);
+
+	main.controller('AlphabetMenuCtrl', ['$scope', 'letterService', 'dictService', function($scope, letterService, dictService){
+		$scope.alphabet = letterService.alphabet;
+		$scope.dictionary = dictService.dictionary;
+
+		function initProbabilities(dictionary) {
+			//Initialize The probabilities for each word
+			angular.forEach(values, function(value, key) {
+			  this.push(key + ': ' + value);
+			}, log);
+		}
+
+		$scope.playLetter = function(letter){
+			console.log("A Letter was clicked");
+		}; 
+	}]); 
+
+</script>
+<body>
+</html>

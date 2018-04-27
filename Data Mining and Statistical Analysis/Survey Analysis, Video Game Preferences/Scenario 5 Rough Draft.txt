@@ -1,0 +1,9 @@
+[Show the sexToLike Data]
+When analyzing the odds ratio of males and females with respect to whether or not they enjoy playing video games, it was found with 95% confidence that the odds of a female disliking video games is 2.45 times more than a male disliking video games. Fisher's test indicates that this correlation is somewhat weak with a p-value of 0.12. Overall this shows that it is not completely clear if males like video games more than females. It is somewhat likely that they do.  
+
+[Show the workToLike Data]
+It seems that there is a strong relationship between people who are employed and people who are unemployed with respect whether or not they enjoy video games. Fisher's test gave a p-value of 0.07, which is close to a 95% confidence of this data being strongly associated. This survey indicates that the odds of somebody who is unemployed disliking video games is 2.7 times more likely than a person who is employed. Given this, it seems that people who are working tend to enjoy video games more than ones who do not work. Many of those who do work tend to be dutiful as 82% of workers do not play when busy. Since many people who work do tend to enjoy video games but do not often get the chance to play them, it is likely that they would enjoy the opportunity to play more games. 
+[show busyToPlay table]
+
+[Show the pcToLike and pcToFreq Data]
+People who own PC's and people who do not own PC's are not strongly associated with respect to whether or not they like video games. The P-value from the fisher test was 0.2537. The fisher test also showed that it is unlikely that there is an association with whether or not a user owns a PC and frequency of video game play with a p value of 0.75. Therefore, knowing whether or not an individual owns a PC should not influence decision making with respect to that individuals preference for playing video games.

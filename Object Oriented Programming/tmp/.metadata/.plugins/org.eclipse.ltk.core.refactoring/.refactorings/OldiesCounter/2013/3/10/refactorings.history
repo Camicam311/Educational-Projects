@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;MyAssignment/myAssignment&apos; to &apos;myAssignment.cpp&apos;" description="Rename resource &apos;myAssignment&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="myAssignment" name="myAssignment.cpp" stamp="1362618719259" updateReferences="true"/>
+</session>

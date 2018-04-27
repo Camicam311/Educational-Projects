@@ -1,0 +1,1 @@
+These source files can be imported into a new project. Sorry for the inconvenience, moodle didn't have enough of an upload limit for me to upload all of the verilog project files so I am just handing over the source files. 

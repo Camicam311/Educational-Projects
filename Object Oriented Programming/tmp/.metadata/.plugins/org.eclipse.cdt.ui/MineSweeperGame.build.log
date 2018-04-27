@@ -1,0 +1,7 @@
+23:14:40 **** Rebuild of configuration Debug for project MineSweeperGame ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\MineSweeperGame.o" "..\\src\\MineSweeperGame.cpp" 
+g++ -o MineSweeperGame.exe "src\\MineSweeperGame.o" 
+
+23:14:41 Build Finished (took 1s.363ms)
+

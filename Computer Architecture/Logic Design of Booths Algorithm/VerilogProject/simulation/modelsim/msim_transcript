@@ -1,0 +1,31 @@
+# Reading C:/altera/13.1/modelsim_ase/tcl/vsim/pref.tcl 
+# do LabTwoPartFour_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/Joshs/Desktop/LabTwoVerilog {C:/Users/Joshs/Desktop/LabTwoVerilog/Multiplier.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Multiplier
+# ** Error: C:/Users/Joshs/Desktop/LabTwoVerilog/Multiplier.v(36): (vlog-2730) Undefined variable: 'Q_neg'.
+# 
+# ** Error: C:/Users/Joshs/Desktop/LabTwoVerilog/Multiplier.v(68): 'aMSB' already declared in this scope (Multiplier).
+# ** Error: C:/Users/Joshs/Desktop/LabTwoVerilog/Multiplier.v(68): Declarations not allowed in unnamed block.
+# ** Error: C:/Users/Joshs/Desktop/LabTwoVerilog/Multiplier.v(69): 'aLSB' already declared in this scope (Multiplier).
+# ** Error: C:/Users/Joshs/Desktop/LabTwoVerilog/Multiplier.v(69): Declarations not allowed in unnamed block.
+# ** Error: C:/Users/Joshs/Desktop/LabTwoVerilog/Multiplier.v(70): 'Formal' must not be declared to be an array: accumulator_out.
+# ** Error: C:/Users/Joshs/Desktop/LabTwoVerilog/Multiplier.v(70): Declarations not allowed in unnamed block.
+# -- Compiling module DFF_EN_WO_SQ
+# ** Error: C:/altera/13.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./LabTwoPartFour_run_msim_rtl_verilog.do line 8
+# C:/altera/13.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog -vlog01compat -work work +incdir+C:/Users/Joshs/Desktop/LabTwoVerilog {C:/Users/Joshs/Desktop/LabTwoVerilog/Multiplier.v}"
+# Error opening C:/Users/jswheele/Desktop/LabTwoVerilog/Adder.v
+# Path name 'C:/Users/jswheele/Desktop/LabTwoVerilog/Adder.v' doesn't exist.

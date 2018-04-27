@@ -1,0 +1,54 @@
+//============================================================================
+// Name        : Minesweeper.cpp
+// Author      : Joshua Wheeler
+// Version     : Comsc 140 -> C++
+// Date  	   : March 20, 2013
+// Description : A Program where the user may input a minesweeper game and then output
+// a map of the Minesweeper answer key
+//============================================================================
+
+#include <iostream>
+using namespace std;
+
+class MineSweeper {
+public:
+	MineSweeper(){
+		row_num = 0;
+		col_num = 0;
+		numCells = row_num*col_num;
+		game_number = 0;
+		quit = 0;
+	};//constructor initializes 0 rows, 0 columns, empty cell set
+	void setSize();
+	void setSweeperCells(char sweeperCells[]);
+	int rowPart(int cell_index);
+	int colPart(int cell_index); //Calculates rows and cells from array index
+	void drawGame(); //calculates output from sweeper cell input.
+	void run(); //Start running minesweeper games. Game ends on input 0 0 for num rows and cols.
+	void newGame(); //Initializes a new game
+private:
+	int game_number;
+	bool quit;
+	int row_num;
+	int col_num; //zero based rows and columns
+	int numCells;
+	char sweeperCells[]; //must be either '.' or '*'
+};
+
+int main() {
+	MineSweeper minesweeper;
+	minesweeper.setSize();
+	return 0;
+}
+
+void MineSweeper::setSize() {
+	cout << "Please Enter the number of rows and columns for your Minesweeper map" << endl;
+	cin >> row_num >> col_num;
+	if(row_num > 10 || row_num < 3 || col_num < 3 || col_num > 8) {
+		cout << "Input our of range. Please try again.\n,"
+			 << "Row number must be between 3 and 10, \n"
+			 << "Column number must be between 3 and 8" << endl;
+		setSize();
+	}
+	return;
+}

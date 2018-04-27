@@ -1,0 +1,93 @@
+Scratch Space
+----------------------------
+Scenario 4:
+In general, do you think the students enjoy playing video games? 
+If you had to make a short list of the most important reasons why students like/dislike video games, what would you put on the list?
+
+Those students who say that they have never played video games or do not at all like video games are asked to skip over some of these questions
+
+Relevant Survey Variables - 
+
+Influences like to play or not - L
+Influences reasons why like or dislike - R
+
+Time - L
+Like to play - L
+How often - L
+Play if busy - L
+
+Where play - R
+Playing educational - R
+
+
+What types of games do you play? - R (only like to play asked)
+Type
+Action 50%
+Adventure 28%
+Simulation 17%
+Sports 39%
+Strategy 63%
+
+What don’t you like about video game playing? - R (everybody asked)
+Dislikes
+Too much time 48%
+Frustrating 26%
+Lonely 6%
+Too many rules 19%
+Costs too much 40%
+Boring 17%
+Friend’s don’t play 17%
+It is pointless 33%
+
+Relevant Details for Scenario 5:
+Look for the differences between those who like to play video games and
+those who don’t.
+
+Compare -
+Like to play : 1=never played, 2=very much, 3=somewhat, 4=not really, 5=not at all.
+
+Collapse Ranges in table of like to 3 variables 
+1=never played
+2={2=very much, 3=somewhat} = enjoy video games
+3={4=not really, 5=not at all} = dislike video games
+
+male and female students (null hypothesis: males prefer video games and play more often)
+those who work and those who don't (null hypothesis: those who work like video games as much as those who don't but don't play as often)
+those who have a computer and those who don't (null hypothesis: those who have a computer play more frequently but enjoy video games just as much as those who don't)
+
+(use graphical displays and cross-tabulations)
+
+
+-----------------------------------------------------------------------------------------
+WRITEUP DATA SCENARIO 4
+-----------------------------------------------------------------------------------------
+#How many people are in each bin for like/dislike, 90 valid responses, 89 know what its like
+dim(subset(vg, like == 1))[1] #1 person never played <-- don't count in if person enjoys, they don't know.
+dim(subset(vg, like == 2))[1] #23 people like to play very much, 25.8%
+dim(subset(vg, like == 3))[1] #46 people somewhat like to play, 51.7%
+dim(subset(vg, like == 4))[1] #13 people not really into playing, 14.6%
+dim(subset(vg, like == 5))[1] #7 people don't like to play at all, 7.9%
+
+
+Students who enjoy video games shall be defined as those that like to play very much and those that somewhat like to play. Those that do not enjoy video games shall be defined as those not really into playing and those the don't like to play at all. With this definition for what it is to enjoy playing a video game, in general it does seem that it is highly likely that students do enjoy playing video games. From the data we can see that 77.5% of students do like to play video games wheras 22.5% of students in the survey do not like to play video games. There are 55% more students who enjoy playing video games than those who don't. Given this, it is apparent from the data that this survey concludes students do generally enjoy playing video games. It is generally known that video games are also very popular in American culture. Only 1 out of the 90 valid responses has never played a video game, this individual was excluded from the distrubtion of those who enjoy and do not enjoy playing video games as it is assumed this person does not know his/her preference due to inexperience.
+
+For those that do like video games, the genres of action and strategy seem to be the genres that are enjoyed the most with 50% and 61% of the  students choosing these in their responses respectively.
+Sports and adventure seem to be moderatley enjoyed with 39% and 28% of students choosing these respectively. Simulation games seem to be the least popular with 17% of students choosing this genre. 66% of the students responded that they find these games relaxing. Students also enjoyed video games for the graphics/realism, mental challenge and as an escape from boredom. About a quarter of the responses were distrubuted amongst each of these reasons. Because of this it seems that they are secondary factors to the relaxation effect. An interesting aspect of the feedback from the survey shows that although most students preferred action games, barely anybody indicated that it is because of its skill requirement of eye/hand coordination. All of this data generally indicates that video games provide relief for these students either by allowing them to take a break from the demands of their daily life or if they are bored, it helps them as a source of entertainment to occupy their time. 
+
+The majority of students largely dislike video games because it either consumes too much of their time (48% of respondents selections) or because they are too expensive (40% of respondents selections).  Many students also found video games pointless (33%) or frustrating (26%). A minority of students indicated that they disliked video games because they are boring (17%), their friends don't play (17%), has too many rules (19%) or because it makes them lonely (6%). 
+
+[*Question: Should a hypothesis or Chi Squared test be used to assert the claim students enjoy video games? It was not rigorously proven that the differences between the populations that enjoy and dislike video games is statistically significant. I thought the differences in between the groups is already very large.]
+
+-----------------------------------------------------------------------------------------
+WRITEUP DATA SCENARIO 5
+-----------------------------------------------------------------------------------------
+
+[Show the sexToLike Data]
+When analyzing the odds ratio of males and females with respect to whether or not they enjoy playing video games, it was found with 95% confidence that the odds of a female disliking video games is 2.45 times more than a male disliking video games. Fisher's test indicates that this correlation is somewhat weak with a p-value of 0.12. Overall this shows that it is not completely clear if males like video games more than females. It is somewhat likely that they do.  
+
+[Show the workToLike Data]
+It seems that there is a strong relationship between people who are employed and people who are unemployed with respect whether or not they enjoy video games. Fisher's test gave a p-value of 0.07, which is close to a 95% confidence of this data being strongly associated. This survey indicates that the odds of somebody who is unemployed disliking video games is 2.7 times more likely than a person who is employed. Given this, it seems that people who are working tend to enjoy video games more than ones who do not work. Many of those who do work tend to be dutiful as 82% of workers do not play when busy. Since many people who work do tend to enjoy video games but do not often get the chance to play them, it is likely that they would enjoy the opportunity to play more games. 
+[show busyToPlay table]
+
+[Show the pcToLike and pcToFreq Data]
+People who own PC's and people who do not own PC's are not strongly associated with respect to whether or not they like video games. The P-value from the fisher test was 0.2537. The fisher test also showed that it is unlikely that there is an association with whether or not a user owns a PC and frequency of video game play with a p value of 0.75. Therefore, knowing whether or not an individual owns a PC should not influence decision making with respect to that individuals preference for playing video games.

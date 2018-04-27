@@ -1,0 +1,66 @@
+﻿Build started 12/19/2014 7:08:47 AM.
+     1>Project "C:\Users\Joshs\Desktop\Life\Educational\CSE 167\CameraPlus\Cube.vcxproj" on node 2 (Build target(s)).
+       Project file contains ToolsVersion="12.0". This toolset may be unknown or missing, in which case you may be able to resolve this by installing the appropriate version of MSBuild, or the build may have been forced to a particular ToolsVersion for policy reasons. Treating the project as if it had ToolsVersion="4.0". For more information, please see http://go.microsoft.com/fwlink/?LinkId=291333.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\glut\glut-3.7.6-bin" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt globals.cpp main.cpp window.cpp
+         main.cpp
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\house.h(8): warning C4200: nonstandard extension used : zero-sized array in struct/union
+                 Cannot generate copy-ctor or copy-assignment operator when UDT contains a zero-sized array
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(69): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(69): error C2228: left of '.getMatrix' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(69): error C2228: left of '.identity' must have class/struct/union
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(221): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(221): error C2228: left of '.move' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(226): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(226): error C2228: left of '.move' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(231): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(231): error C2228: left of '.move' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(235): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(235): error C2228: left of '.move' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(239): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(239): error C2228: left of '.move' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(243): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(243): error C2228: left of '.move' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(247): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(247): error C2228: left of '.reset' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(252): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(252): error C2228: left of '.orbit' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(256): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(256): error C2228: left of '.orbit' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(260): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(260): error C2228: left of '.scale' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(265): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\main.cpp(265): error C2228: left of '.scale' must have class/struct/union
+                 type is ''unknown-type''
+         globals.cpp
+         Generating Code...
+         Compiling...
+         window.cpp
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\house.h(8): warning C4200: nonstandard extension used : zero-sized array in struct/union
+                 Cannot generate copy-ctor or copy-assignment operator when UDT contains a zero-sized array
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\window.cpp(46): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\window.cpp(46): error C2228: left of '.getMatrix' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\window.cpp(49): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\window.cpp(49): error C2228: left of '.spin' must have class/struct/union
+                 type is ''unknown-type''
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\window.cpp(50): error C2065: 'cube' : undeclared identifier
+     1>c:\users\joshs\desktop\life\educational\cse 167\cameraplus\window.cpp(50): error C2228: left of '.render' must have class/struct/union
+                 type is ''unknown-type''
+         Generating Code...
+     1>Done Building Project "C:\Users\Joshs\Desktop\Life\Educational\CSE 167\CameraPlus\Cube.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:05.28

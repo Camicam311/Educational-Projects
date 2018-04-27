@@ -1,0 +1,979 @@
+\documentclass{article}
+% Change "article" to "report" to get rid of page number on title page
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{soul}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{ifthen}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage[toc,page]{appendix}
+\usepackage{float}
+\restylefloat{table}
+
+% Homework Specific Information
+\newcommand{\hmwkTitle}{Neural Networks}
+\newcommand{\hmwkSubTitle}{Homework 1}
+\newcommand{\hmwkDueDate}{October 18, 2015}
+\newcommand{\hmwkClass}{CSE 190}
+\newcommand{\hmwkClassTime}{1:00}
+\newcommand{\hmwkClassInstructor}{Cottrell}
+\newcommand{\hmwkAuthorName}{}
+
+% In case you need to adjust margins:
+\topmargin=-0.45in      %
+\evensidemargin=0in     %
+\oddsidemargin=0in      %
+\textwidth=6.5in        %
+\textheight=9.0in       %
+\headsep=0.25in         %
+
+% This is the color used for MATLAB comments below
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
+
+% For faster processing, load Matlab syntax for listings
+\lstloadlanguages{Matlab}%
+\lstset{language=Matlab,                        % Use MATLAB
+        frame=single,                           % Single frame around code
+        basicstyle=\small\ttfamily,             % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf,        % MATLAB functions bold and blue
+        keywordstyle=[2]\color{Purple},         % MATLAB function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar,  % User functions underlined and blue
+        identifierstyle=,                       % Nothing special about identifiers
+                                                % Comments small dark green courier
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small,
+        stringstyle=\color{Purple},             % Strings are purple
+        showstringspaces=false,                 % Don't put marks in string spaces
+        tabsize=5,                              % 5 spaces per tab
+        %
+        %%% Put standard MATLAB functions not included in the default
+        %%% language here
+        morekeywords={xlim,ylim,var,alpha,factorial,poissrnd,normpdf,normcdf},
+        %
+        %%% Put MATLAB function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        %%% Put user defined functions here
+        morekeywords=[3]{FindESS, homework_example},
+        %
+        morecomment=[l][\color{Blue}]{...},     % Line continuation (...) like blue comment
+        numbers=left,                           % Line numbers on left
+        firstnumber=1,                          % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue},          % Line numbers are blue
+        stepnumber=5                            % Line numbers go in steps of 5
+        }
+
+% Setup the header and footer
+\pagestyle{fancy}                                                       %
+\lhead{\hmwkAuthorName}                                                 %
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}  %
+\rhead{\firstxmark}                                                     %
+\lfoot{\lastxmark}                                                      %
+\cfoot{}                                                                %
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}}                  %
+\renewcommand\headrulewidth{0.4pt}                                      %
+\renewcommand\footrulewidth{0.4pt}                                      %
+
+% This is used to trace down (pin point) problems
+% in latexing a document:
+%\tracingall
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some tools
+\newcommand{\enterProblemHeader}[1]{\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak%
+                                    \nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak}%
+\newcommand{\exitProblemHeader}[1]{\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak%
+                                   \nobreak\extramarks{#1}{}\nobreak}%
+
+\newlength{\labelLength}
+\newcommand{\labelAnswer}[2]
+  {\settowidth{\labelLength}{#1}%
+   \addtolength{\labelLength}{0.25in}%
+   \changetext{}{-\labelLength}{}{}{}%
+   \noindent\fbox{\begin{minipage}[c]{\columnwidth}#2\end{minipage}}%
+   \marginpar{\fbox{#1}}%
+
+   % We put the blank space above in order to make sure this
+   % \marginpar gets correctly placed.
+   \changetext{}{+\labelLength}{}{}{}}%
+
+\setcounter{secnumdepth}{0}
+\newcommand{\homeworkProblemName}{}%
+\newcounter{homeworkProblemCounter}%
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]%
+  {\stepcounter{homeworkProblemCounter}%
+   \renewcommand{\homeworkProblemName}{#1}%
+   \section{\homeworkProblemName}%
+   \enterProblemHeader{\homeworkProblemName}}%
+  {\exitProblemHeader{\homeworkProblemName}}%
+
+\newcommand{\problemAnswer}[1]
+  {\noindent\fbox{\begin{minipage}[c]{\columnwidth}#1\end{minipage}}}%
+
+\newcommand{\problemLAnswer}[1]
+  {\labelAnswer{\homeworkProblemName}{#1}}
+
+\newcommand{\homeworkSectionName}{}%
+\newlength{\homeworkSectionLabelLength}{}%
+\newenvironment{homeworkSection}[1]%
+  {% We put this space here to make sure we're not connected to the above.
+   % Otherwise the changetext can do funny things to the other margin
+
+   \renewcommand{\homeworkSectionName}{#1}%
+   \settowidth{\homeworkSectionLabelLength}{\homeworkSectionName}%
+   \addtolength{\homeworkSectionLabelLength}{0.25in}%
+   \changetext{}{-\homeworkSectionLabelLength}{}{}{}%
+   \subsection{\homeworkSectionName}%
+   \enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]}}%
+  {\enterProblemHeader{\homeworkProblemName}%
+
+   % We put the blank space above in order to make sure this margin
+   % change doesn't happen too soon (otherwise \sectionAnswer's can
+   % get ugly about their \marginpar placement.
+   \changetext{}{+\homeworkSectionLabelLength}{}{}{}}%
+
+\newcommand{\sectionAnswer}[1]
+  {% We put this space here to make sure we're disconnected from the previous
+   % passage
+
+   \noindent\fbox{\begin{minipage}[c]{\columnwidth}#1\end{minipage}}%
+   \enterProblemHeader{\homeworkProblemName}\exitProblemHeader{\homeworkProblemName}%
+   \marginpar{\fbox{\homeworkSectionName}}%
+
+   % We put the blank space above in order to make sure this
+   % \marginpar gets correctly placed.
+   }%
+
+%%% I think \captionwidth (commented out below) can go away
+%%%
+%% Edits the caption width
+%\newcommand{\captionwidth}[1]{%
+%  \dimen0=\columnwidth   \advance\dimen0 by-#1\relax
+%  \divide\dimen0 by2
+%  \advance\leftskip by\dimen0
+%  \advance\rightskip by\dimen0
+%}
+
+% Includes a figure
+% The first parameter is the label, which is also the name of the figure
+%   with or without the extension (e.g., .eps, .fig, .png, .gif, etc.)
+%   IF NO EXTENSION IS GIVEN, LaTeX will look for the most appropriate one.
+%   This means that if a DVI (or PS) is being produced, it will look for
+%   an eps. If a PDF is being produced, it will look for nearly anything
+%   else (gif, jpg, png, et cetera). Because of this, when I generate figures
+%   I typically generate an eps and a png to allow me the most flexibility
+%   when rendering my document.
+% The second parameter is the width of the figure normalized to column width
+%   (e.g. 0.5 for half a column, 0.75 for 75% of the column)
+% The third parameter is the caption.
+\newcommand{\scalefig}[3]{
+  \begin{figure}[H]
+    % Requires \usepackage{graphicx}
+    \centering
+    \includegraphics[width=#2\columnwidth]{#1}
+    %%% I think \captionwidth (see above) can go away as long as
+    %%% \centering is above
+    %\captionwidth{#2\columnwidth}%
+    \caption{#3}
+    \label{#1}
+  \end{figure}}
+
+% Includes a MATLAB script.
+% The first parameter is the label, which also is the name of the script
+%   without the .m.
+% The second parameter is the optional caption.
+\newcommand{\matlabscript}[2]
+  {\begin{itemize}\item[]\lstinputlisting[caption=#2,label=#1]{#1.m}\end{itemize}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Make title
+\title{\vspace{2in}\textmd{\textbf{\hmwkClass:\ \hmwkTitle\ifthenelse{\equal{\hmwkSubTitle}{}}{}{\\\hmwkSubTitle}}}\\\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\\vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}\vspace{3in}}
+\date{}
+\author{\textbf{\hmwkAuthorName}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{spacing}{1.1}
+\maketitle
+% Uncomment the \tableofcontents and \newpage lines to get a Contents page
+% Uncomment the \setcounter line as well if you do NOT want subsections
+%       listed in Contents
+%\setcounter{tocdepth}{1}
+\tableofcontents
+\newpage
+
+% When problems are long, it may be desirable to put a \newpage or a
+% \clearpage before each homeworkProblem environment
+
+\clearpage
+\begin{homeworkProblem}
+
+
+To compute the distance $l=\frac{-w_0}{||\textbf{w}||}=\frac{\textbf{w}^{T}\textbf{x}}{||\textbf{w}||}$
+as shown in figure 1, the distance from the origin to the decision boundary will be computed, where the origin is assumed to be centered where the weight vector starts. 
+
+The 2D decision boundary is the line
+\[ w_1x_1+w_2x_2+w_o=0 => x_2 = \frac{-w_1}{w_2}x_1 - \frac{w_o}{w_2} \]
+In vector form this is
+\[ 
+\begin{bmatrix}
+    x_1 \\
+    \frac{-w_1}{w_2}x_1 - \frac{w_o}{w_2}
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+\frac{-w_o}{w_2}
+\end{bmatrix}
+ - 
+ \frac{1}{w_2}
+ \begin{bmatrix}
+    -w_2 \\
+    w1
+ \end{bmatrix}
+ x
+\]
+Hence, $\textbf{w}=\begin{bmatrix}w_1 \\ w_2 \end{bmatrix}$ is perpendicular to the decision boundary. \\
+Any point to the line from the origin is given by $\textbf{x}=\begin{bmatrix}x_1 \\ x_2 \end{bmatrix}$
+
+Projecting \textbf{x} onto \textbf{w} gives us the distance from the weight vector to the decision boundary. 
+\[ 
+    l=proj_\textbf{w}(\textbf{x})=\frac{|\textbf{w}\cdot\textbf{x}|}{||\textbf{w}||}=\frac{\textbf{w}^{T}\textbf{x}}{||\textbf{w}||}
+\]
+ 
+\scalefig{linespic}{0.5}{Geometric distance of weight vector to decision boundary}
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+    Learning the "OR" function
+
+    \begin{homeworkSection}{(a)}
+        Perceptron Learning Rule:
+        \[
+           y = \begin{cases} 
+              \sum_{i} w_ix_i \geq \theta & \text{then } 1 \\
+              \text{else} & 0
+           \end{cases}
+        \]
+    \end{homeworkSection}
+
+    \begin{homeworkSection}{(b)}
+        \begin{table}[H]
+\centering
+\caption{Converging "OR" using Perceptron learning}
+\label{my-label}
+\begin{tabular}{llllllll}
+\hline
+\multicolumn{1}{|l|}{x_0} & \multicolumn{1}{l|}{x_1} & \multicolumn{1}{l|}{w_0} & \multicolumn{1}{l|}{w_1} & \multicolumn{1}{l|}{Net} & \multicolumn{1}{l|}{Output} & \multicolumn{1}{l|}{Teacher} & \multicolumn{1}{l|}{Threshold} \\ \hline
+1                         & 0                        & 0                        & 0                        & 1                        & 0                           & 1                            & 0                              \\
+0                         & 0                        & 1                        & 0                        & -1                       & 1                           & 0                            & -1                             \\
+0                         & 0                        & 1                        & 0                        & -1                       & 1                           & 0                            & 0                              \\
+0                         & 1                        & 1                        & 0                        & 1                        & 0                           & 1                            & 1                              \\
+0                         & 0                        & 1                        & 1                        & -1                       & 1                           & 0                            & 0                              \\
+x                         & x                        & 1                        & 1                        & x                        & x                           & x                            & 1                             
+\end{tabular}
+\end{table}
+
+The last row shows the values of the weights and threshold that will always correctly classify the inputs of the OR function. 
+    \end{homeworkSection}
+      
+    \begin{homeworkSection}{(c)}
+          The solution is not unique, there are an infinite amount of ways to choose inputs to train the OR function to eventually converge at some iteration n. 
+    \end{homeworkSection}
+\end{homeworkProblem}
+\begin{homeworkProblem}
+    Classifying the Iris dataset using the perceptron
+     \begin{homeworkSection}{(i)}
+        The Z-Score normalized the distribution with respect to a standard distribution. This is used as a pre-processing step for a few reasons. There is more mathematical convenience in dealing with variables in a normalized space. It is also computationally simpler. When values are not normalized they can get very large when performing operations such as exponentiation which makes them impossible to compute. 
+     \end{homeworkSection}
+     \begin{homeworkSection}{(ii)}
+        The scatter plot for every dimension is attached with this report. The classes are all linearly separable. This can be observed from the graphs. There exists a line that clearly separates the two clusters of data for every pair of dimensions. 
+        
+        \scalefig{DataScatter}{0.8}{Scatterplot of Iris data for each pair of dimensions}
+        
+     \end{homeworkSection}
+     \begin{homeworkSection}{(iii)}
+        Source code for the Perceptron training in Appendix A
+     \end{homeworkSection}
+     \begin{homeworkSection}{(iv)}
+        The average error of the test data was $0\%$.\\  
+        This is likely due to the fact that the data is very well separated.
+        Figure 3 shows the console output after running the Perceptron algorithm. 
+         \scalefig{perceptron_out}{0.8}{The console output of the perceptron algorithm}
+     \end{homeworkSection}
+     \begin{homeworkSection}{(v)}
+        The learning rate for this algorithm was set to be 1. 
+        Raising or lowering the learning rate affects the step size of the gradient descent used in the update rule. 
+     \end{homeworkSection}
+\end{homeworkProblem}
+\begin{homeworkProblem}
+    Gradient for Logistic Regression Cost Function: \\
+    We wish to find $\frac{\partial E(\theta)}{\partial \theta_j}$ for the logistic cost function $E(\theta)$ where
+    \[
+        E(\theta) =  -\sum_{i=1}^N y^{(i)}log(h_{\theta}(x^{(i)})) + (1-y^{(i)})log(1-h_{\theta}(x^{(i)}))
+    \]
+    and 
+    \[
+        h_{\theta}(x) = \frac{1}{1 + e^{-\theta^{T}x}}
+    \]
+    
+    Below is a derivation of $\frac{\partial E(\theta)}{\partial \theta_j}$ with some algebraic steps omitted for simplicity:
+    
+    %Equations with no numbering in specific line by using \nonumber
+    %\begin{align}
+    %\ddot{\underline{\mathbf{r}}} &= %\frac{d{^2}\underline{\mathbf{r}}}{dt^2}\nonumber\\
+    %                          &= 0
+    %\end{align}
+    \begin{equation}
+        \label{eq1}
+        log(h_{\theta}(x)) = log(\frac{1}{1 + e^{-\theta^{T}x}}) = -log(1+e^{-\theta^{T}x})
+    \end{equation}
+    \begin{equation}
+        \label{eq2}
+        \begin{split}
+        log(1-h_{\theta}(x)) = log(\frac{1 + e^{-\theta^{T}x}}{1 + e^{-\theta^{T}x}} - \frac{1}{1 + e^{-\theta^{T}x}}) = log(\frac{e^{-\theta^{T}x}}{1 + e^{-\theta^{T}x}}) = log(e^{-\theta^{T}x}) - log(1+e^{-\theta^{T}x}) \\ 
+        = -\theta^{T}x - log(1+e^{-\theta^{T}x})
+        \end{split}
+     \end{equation}
+     Using (1) and (2), $E(\theta)$ can be re-written as:   \\
+     \begin{equation}
+        \label{eq3}
+        \begin{split}
+        E(\theta) = -\sum_{i=1}^N[-y^{(i)}log(1 + e^{-\theta^{T}x^{(i)}}) + (1-y^{(i)})(-\theta^{T}x^{(i)} - log(1+e^{-\theta^{T}x^{(i)}})) ] \\
+        = -\sum_{i=1}^N[y^{(i)}\theta^{T}x^{(i)} - \theta^{T}x^{(i)} - log(1 + e^{-\theta^{T}x^{(i)}})]
+        \end{split}
+    \end{equation}
+    We can now easily calculate the partial derivative of (3) using the partial derivatives of the following terms:
+    \begin{equation}
+        \frac{\partial}{\partial \theta_j}\theta^{T}x = \theta_{0} + \theta_{1}x_{1} + \theta_{2}x_{2} + ... + \theta_{j}x_{j} + ... + \theta_{n}x_{n} = x_{j}
+    \end{equation}
+    \begin{equation}
+        \begin{split}
+        \frac{\partial}{\partial \theta_j}log(1 + e^{-\theta^{T}x}) = \frac{ \frac{\partial}{\partial \theta_j}(1 + e^{-\theta^{T}x})}{1 + e^{-\theta^{T}x}} =
+        \frac{e^{-\theta^{T}x}\frac{\partial}{\partial \theta_j}(-\theta^{T}x)}{1 + e^{-\theta^{T}x}}\\
+         = \frac{x_{j}e^{-\theta^{T}x}}{1 + e^{-\theta^{T}x}} = x_{j}h_{\theta}(x) 
+        \end{split}
+    \end{equation}
+    Also,
+    \begin{equation}
+        -\theta^{T}x - log(1 + e^{-\theta^{T}x}) = -[log(e^{-\theta^{T}x}) + log(1 + e^{-\theta^{T}x})] = -log(1+e^{-\theta^{T}x})
+    \end{equation}
+    Given (6), (4) can be re-written as 
+    \begin{equation}
+        E(\theta) =  -\sum_{i=1}^N \theta^{T}x^{(i)}y^{(i)} - log(1 + e^{-\theta^{T}x^{(i)}})
+    \end{equation}
+    And the partial derivative $\frac{\partial E(\theta)}{\partial \theta_j}$ is:
+    \begin{equation}
+         \begin{split}
+         \frac{\partial}{\partial \theta_j}E(\theta) = -\sum_{i=1}^N y^{(i)}\frac{\partial}{\partial \theta_j}[\theta^{T}x^{(i)}] - \frac{\partial}{\partial \theta_j}[log(1 + e^{-\theta^{T}x^{(i)}})] = -\sum_{i=1}^N y^{(i)}x_{j} - x_{j}h_{\theta}(x^{(i)})
+         \\ = \sum_{i=1}^N x_{j}(h_{\theta}(x^{(i)}) - y^{(i)})
+         \end{split}
+    \end{equation}
+\end{homeworkProblem}
+\begin{homeworkProblem}
+    Gradient for Softmax Regression Cost Function:
+    We wish to find $\nabla_{\theta^{(k)}}E(\theta)$ for the softmax regression cost function $E(\theta)$ where
+    \[
+        E(\theta) = -[\sum_{i=1}^N \sum_{k=0}^K 1\{y^{(i)} = k\}log(\frac{e^{\theta^{(k)T}x^{(i)}}}{\sum_{j=0}^K e^{\theta^{(j)T}x^{(i)}}})]
+    \]
+    
+    Below is a derivation of $\nabla_{\theta^{(k)}}E(\theta) = \frac{\partial E(\theta)}{\partial \theta_k}$ where $\frac{\partial E(\theta)}{\partial \theta_k}$ is the partial derivative for an element in $\nabla E(\theta)$ with some algebraic steps omitted for simplicity:
+    \setcounter{equation}{0}
+    \begin{equation}
+        log(\frac{e^{\theta^{(k)T}x}}{\sum_{j=0}^K e^{\theta^{(j)T}x}}) = log(e^{\theta^{(k)T}x}) - log(\sum_{j=0}^K e^{\theta^{(j)T}x}) =  \theta^{(k)T}x - log(\sum_{j=0}^K e^{\theta^{(j)T}x})
+    \end{equation}
+    Using (1) we can calculate the partial derivative as follows: 
+    \begin{equation}
+        \begin{split}
+        \frac{\partial}{\partial \theta_k}-[\sum_{i=1}^N \sum_{k=0}^K 1\{y^{(i)} = k\}log(\frac{e^{\theta^{(k)T}x^{(i)}}}{\sum_{j=0}^K e^{\theta^{(j)T}x^{(i)}}})]
+        = -[\sum_{i=1}^N \frac{\partial}{\partial \theta_k} \sum_{k=0}^K 1\{y^{(i)} = k\}log(\frac{e^{\theta^{(k)T}x^{(i)}}}{\sum_{j=0}^K e^{\theta^{(j)T}x^{(i)}}})]
+        \\ = -[\sum_{i=1}^N 1\{y^{(i)} = k\}\frac{\partial}{\partial \theta_k}log(\frac{e^{\theta^{(k)T}x^{(i)}}}{\sum_{j=0}^K e^{\theta^{(j)T}x^{(i)}}})]
+       \\ = -[\sum_{i=1}^N 1\{y^{(i)} = k\}\frac{\partial}{\partial \theta_k}(\theta^{(k)T}x^{(i)} - log(\sum_{j=0}^K e^{\theta^{(j)T}x^{(i)}}))] 
+        \end{split}
+    \end{equation}
+    Where, 
+    \begin{equation}
+      \frac{\partial}{\partial \theta_k} \theta^{(k)T}x = x
+    \end{equation}
+    \begin{equation}
+       \begin{split}
+       \frac{\partial}{\partial \theta_k} log(\sum_{j=0}^K e^{\theta^{(j)T}x}) = 
+       \frac{1}{\sum_{j=0}^K e^{\theta^{(j)T}x}}\frac{\partial}{\partial \theta_k}(\sum_{j=0}^K e^{\theta^{(j)T}x}) = \frac{e^{\theta^{(k)T}x}}{\sum_{j=0}^K e^{\theta^{(j)T}x}}x \\ 
+       = P(y=k|x;\theta)x
+       \end{split}
+    \end{equation}
+    
+    Given (3) and (4), (2) can be derived to be
+    \begin{equation}
+        \begin{split}
+        \frac{\partial E(\theta)}{\partial \theta_k} =  -[\sum_{i=1}^N 1\{y^{(i)} = k\}\frac{\partial}{\partial \theta_k}(\theta^{(k)T}x^{(i)} - log(\sum_{j=0}^K e^{\theta^{(j)T}x^{(i)}}))] 
+        = -[\sum_{i=1}^N 1\{y^{(i)} = k\}(x^{(i)} - P(y^{(i)}=k|x^{(i)};\theta)x^{(i)})] \\
+        = -[\sum_{i=1}^N (x^{(i)}1\{y^{(i)} = k\} - P(y^{(i)}=k|x^{(i)};\theta)x^{(i)}1\{y^{(i)} = k\})] 
+        \\ = -[\sum_{i=1}^N x^{(i)}(1\{y^{(i)} = k\} - P(y^{(i)}=k|x^{(i)};\theta))] 
+        \end{split}
+    \end{equation}
+    Hence,
+    \begin{equation}
+         \nabla_{\theta^{(k)}}E(\theta) = \frac{\partial E(\theta)}{\partial \theta_k} = -[\sum_{i=1}^N x^{(i)}(1\{y^{(i)} = k\} - P(y^{(i)}=k|x^{(i)};\theta))] 
+    \end{equation}
+\end{homeworkProblem}
+\begin{homeworkProblem}
+    Reading in the Data for the MNIST dataset: \\
+    The function used to read in the data is shown in Appendix B
+\end{homeworkProblem}
+\begin{homeworkProblem}
+    Logistic Regression via Gradient Descent:
+    (Code for the logistic regression is in Appendix C)
+     \begin{homeworkSection}{(a)}
+        The test accuracy was erroneous for the 10 2-way classifications. 
+        Classes 0 to 9 all had a test error of 0.902. 
+        This happened because while data was being classified with respect to logit(x),
+        the probabilities given by logit(x) did not change significantly after the update steps. 
+        This caused the binary classification for each data point to either always be a 0 or always be a one. 
+        Since the logit always classified the same for every data point, only 10 percent of the data points were classified correctly and the rest were not correctly classified. 
+        
+        During diagnosis, no problems were found in the gradient descent calculation, the error calculation or the update step. The root cause of the classification issue is not known. 
+     \end{homeworkSection}
+     \begin{homeworkSection}{(b)}
+        The overall test error of the combined models was 0.9132. 
+        This is due to the same reasons as part (a) of this problem. 
+     \end{homeworkSection}
+\end{homeworkProblem}
+\begin{homeworkProblem}
+    Softmax Regression via Gradient Descent:
+     (Code for the softmax regression is in Appendix D)
+     \begin{homeworkSection}{(a)}
+        The following figure shows the error rate of the training set vs. the number of iterations of gradient descent:
+        \scalefig{softmaxErr}{0.8}{Number of iterations vs. Test Error}
+     \end{homeworkSection}
+     \begin{homeworkSection}{(b)}
+        The softmax regression has a prediction error of 0.0925 as shown in the figure below,
+        which means that this classifier was 90.75 percent accurate. 
+        \scalefig{BestPredictionError}{0.8}{Softmax Prediction Output}
+     \end{homeworkSection}
+     \begin{homeworkSection}{(c)}
+        In this case, the test accuracy is much higher than the 10-way logistic classifier in this report. Though if the 10-way classifier were working I predict that the test accuracy would be about the same.
+        This is because the softmax regression is a matrix of 10 logistic models. 
+        10 binary logistic classifiers are equivalent to a softmax classifier with k=10 classes. 
+     \end{homeworkSection}
+\end{homeworkProblem}
+\newpage
+\appendix
+\section{\\Appendix A: Perceptron Source Code For Iris Dataset} \label{App:AppendixA}
+% the \\ insures the section title is centered below the phrase: AppendixA
+\begin{lstlisting}
+import numpy as np
+import pandas as pd
+from scipy.stats import zscore
+import matplotlib.pyplot as plt
+import random as rand
+
+#Read in the data
+iris_train = open("iris/iris_train.data")
+iris_test = open("iris/iris_test.data")
+train_data = []
+test_data = []
+
+def parseDataRow(data_row):
+	data_ary = data_row.split(",")
+	data_ary[0] = float(data_ary[0])
+	data_ary[1] = float(data_ary[1])
+	data_ary[2] = float(data_ary[2])
+	data_ary[3] = float(data_ary[3])
+	data_ary[4] = data_ary[4].rstrip('\n')
+	label=0
+	#Compute label value
+	if(data_ary[4] == "Iris-setosa"):
+		label=1
+	data_ary.append(label)
+	return data_ary
+
+for data_row in iris_train:
+	data_ary = parseDataRow(data_row)
+	train_data.append(data_ary)
+
+for data_row in iris_test: 
+	data_ary = parseDataRow(data_row)
+	test_data.append(data_ary)
+iris_train.close()
+iris_test.close()
+
+#Create the dataframe
+train_df =  
+pd.DataFrame(train_data, columns=['sl','sw','pl','pw', 'class_name', 'label'])
+test_df =  
+pd.DataFrame(train_data, columns=['sl','sw','pl','pw', 'class_name', 'label'])
+
+#ZScore of training data
+sl_norm = zscore(train_df['sl'])
+sw_norm = zscore(train_df['sw'])
+pl_norm = zscore(train_df['pl'])
+pw_norm = zscore(train_df['pw'])
+
+#Add Normalized Values to Dataframe
+train_df['sl_norm'] = sl_norm
+train_df['sw_norm'] = sw_norm
+train_df['pl_norm'] = pl_norm
+train_df['pw_norm'] = pw_norm
+
+#ZScore of test data
+sl_norm = zscore(test_df['sl'])
+sw_norm = zscore(test_df['sw'])
+pl_norm = zscore(test_df['pl'])
+pw_norm = zscore(test_df['pw'])
+
+#Add Normalized Values to Dataframe
+test_df['sl_norm'] = sl_norm
+test_df['sw_norm'] = sw_norm
+test_df['pl_norm'] = pl_norm
+test_df['pw_norm'] = pw_norm
+
+#The Perceptron Model 
+alpha = 1 #learning rate
+weights = [0,0,0,0] #initial weights
+inputs = [] #The inputs (rows in dataframe)
+threshold = 0
+
+#Determine the output using the activation rule
+def calcOutput(weights, inputs):
+	activation_energy = np.dot(weights,inputs)
+	if activation_energy < threshold:
+		return 0
+	else:
+		return 1
+
+#Update step on all of the weights an the threshold
+#expected_output - the teacher
+#actual_output - the output
+def update(actual_output, expected_output):
+	global threshold 
+	if(actual_output == expected_output):
+		return
+	for i in range(0, len(weights)):
+		weights[i] = weights[i] + alpha*(expected_output - actual_output)*inputs[i]
+	if(actual_output == 1 and expected_output == 0):
+		threshold += alpha
+	if(actual_output == 0 and expected_output == 1):
+		threshold -= alpha
+
+has_patience = True
+num_attempts = 0
+num_consec_correct = 0  #number of consecutive right answers
+#End algorithm after it has been correct for 100 consecutive iterations
+print "Training Perceptron...."
+error = 0.0
+while(has_patience):
+	randRow = train_df.sample(n=1) #Choose random row
+	expected_output = int(randRow['label']) #parse pandas dataframe
+	inputs = [float(randRow['sl_norm']), float(randRow['sw_norm']),
+	float(randRow['pl_norm']), float(randRow['pw_norm'])]
+	actual_output = calcOutput(weights, inputs) #Apply activation rule
+	update(actual_output, expected_output) #update weights and threshold
+	num_consec_correct += 1
+	num_attempts += 1
+	if(expected_output != actual_output):
+		num_consec_correct = 0
+	if(num_consec_correct == 100):
+		has_patience = False
+
+print "-----------------------------------------"
+print "Perceptron has converged"
+print "Weights: "
+print weights
+print "Threshold: "
+print threshold
+print "num attempts: " + str(num_attempts)
+print "-----------------------------------------"
+
+print "Testing Model..."
+num_rows = 0
+num_incorrect = 0 
+for index, row in test_df.iterrows():
+	expected_output = int(row['label']) #parse pandas dataframe
+	inputs = [float(row['sl_norm']), float(row['sw_norm']), 
+	float(row['pl_norm']), float(row['pw_norm'])]
+	actual_output = calcOutput(weights, inputs)
+	num_rows += 1
+	if(expected_output != actual_output):
+		num_incorrect += 1
+print "Average Error Rate: " + str(float(num_incorrect)/float(num_rows))
+\end{lstlisting}
+
+\newpage
+\section{\\Appendix B: Python function to read MNIST Data} \label{App:AppendixB}}
+% the \\ insures the section title is centered below the phrase: Appendix B
+
+\begin{lstlisting}
+### Modified a function found on piazza posts to read MNIST binary data 
+def load_mnist(dataset="training", digits=np.arange(10), path="."):
+    """
+    Loads MNIST files into 3D numpy arrays
+
+    Adapted from: http://abel.ee.ucla.edu/cvxopt/_downloads/mnist.py
+    """
+
+    if dataset == "training":
+        fname_img = os.path.join(path, 'train-images-idx3-ubyte')
+        fname_lbl = os.path.join(path, 'train-labels-idx1-ubyte')
+    elif dataset == "testing":
+        fname_img = os.path.join(path, 't10k-images-idx3-ubyte')
+        fname_lbl = os.path.join(path, 't10k-labels-idx1-ubyte')
+    else:
+        raise ValueError("dataset must be 'testing' or 'training'")
+
+    flbl = open(fname_lbl, 'rb')
+    magic_nr, size = struct.unpack(">II", flbl.read(8))
+    lbl = pyarray("b", flbl.read())
+    flbl.close()
+
+    fimg = open(fname_img, 'rb')
+    magic_nr, size, rows, cols = struct.unpack(">IIII", fimg.read(16))
+    img = pyarray("B", fimg.read())
+    fimg.close()
+
+    ind = [ k for k in range(size) if lbl[k] in digits ]
+    N = len(ind)
+
+    images = zeros((N, rows*cols+1), dtype=float)
+    labels = zeros((N, 1), dtype=int8)
+    for i in range(len(ind)):
+        images[i] = np.concatenate(([1],array(img[ ind[i]*rows*cols : 
+        (ind[i]+1)*rows*cols ]))).reshape(rows*cols+1)
+        labels[i] = lbl[ind[i]]
+    return images, labels
+\end{lstlisting}
+
+\newpage
+
+\newpage
+\section{\\Appendix C: 10-way Logistic Regression Classification Source Code} \label{App:AppendixC}}
+% the \\ insures the section title is centered below the phrase: Appendix B
+\begin{lstlisting}
+class LogisticPredictor:
+	def __init__(self, _inputs, _labels, _class, _learning_rate=0.5):
+		self.inputs = normalize(_inputs, axis=1, norm='l1')
+		self.k = _class
+		self.binary_labels = self.binarize(_labels)
+		self.alpha = _learning_rate
+		self.weights = np.random.rand(1, _inputs.shape[1])[0]
+
+	def binarize(self,_labels):
+		binarized_labels = []
+		for label in _labels:
+			if(label == self.k):
+				binarized_labels.append(1)
+			else:
+				binarized_labels.append(0)
+		return binarized_labels
+
+	def logit(self,x):
+		return  1.0/(1.0 + float(np.exp(-1*(np.dot(np.mat(self.weights), 
+		np.mat(x).T)))))
+
+	def getWeights(self):
+		return self.weights
+
+	def setWeights(self, _weights):
+		self.weights = _weights
+
+	def calcCost(self):
+		gradE = []
+		hMat = []
+
+		for x in zip(self.inputs):
+			hMat.append(self.logit(x))
+
+		print "Calculating gradient for E(theta)..."
+		if(len(self.weights) == 1):
+			self.weights = self.weights[0]
+		for j in range(len(self.weights)):
+			partialE_j = 0
+			for i in range(len(self.binary_labels)):
+				partialE_j += self.inputs[i][j]*(hMat[i] - self.binary_labels[i])
+			gradE.append(partialE_j)
+		return normalize(gradE,axis=1, norm='l1')
+
+	def updateWeights(self):
+		gradE = self.calcCost()
+		self.weights = self.weights - np.multiply(self.alpha,gradE)
+		return
+
+	def calcTrainingError(self):
+		total_incorrect=0
+		total_datasize=self.inputs.shape[0]
+
+		for (x,y) in zip(self.inputs, self.binary_labels):
+			class_prb = self.logit(x)
+			y_hat = 0
+			if(class_prb > 0.5):
+				y_hat = 1
+			if y != y_hat:
+				total_incorrect+=1
+		return float(total_incorrect)/total_datasize
+
+	def train(self):
+		old_error = 2
+		cur_iter = 0
+		while True:
+			cur_iter += 1
+			print "Updating Weights..."
+			self.updateWeights()
+			new_error = self.calcTrainingError()
+			if(np.absolute(old_error - new_error) <= 0.01):
+				old_error = new_error
+				break
+			old_error = new_error
+		print "Training Complete with training error " + str(old_error) + " 
+		for class " + str(self.k) 
+		return
+
+print "Loading Training Data..."
+images_train, labels_train = load_mnist('training')
+print "Done."
+
+print "Loading Testing Data..."
+images_test, labels_test = load_mnist('testing')
+images_test = normalize(images_test, axis=1, norm='l1')
+print "Done."
+
+weight_mat = [] #Trained weights for a given class k
+for k in range(10):
+	print "Training class " + str(k) 
+	classPredictor = LogisticPredictor(images_train, labels_train, k)
+	classPredictor.train()
+	weight_mat.append(classPredictor.getWeights())
+
+print "Making Predictions for each model..."
+num_classes = 10
+prb_mat = np.zeros((images_test.shape[0], num_classes)) #Shape: (60000, 10)
+for k in range(num_classes):
+	print "Predicting class " + str(k)
+	classPredictor = LogisticPredictor(images_test, labels_test, k)
+	classPredictor.setWeights(weight_mat[k])
+	num_datapts = 0
+	num_incorrect = 0
+	for i in range(images_test.shape[0]):
+		num_datapts += 1
+		class_prb = classPredictor.logit(images_test[i])
+		y_hat = 0
+		prb_mat[i][k] = class_prb #Set value in prb mat to calc overall test
+		if(class_prb > 0.5):
+			y_hat = 1
+		if(labels_test[i] != y_hat):
+			num_incorrect += 1
+	print "Test error for class "
+	+str(k)+ ": " + str(float(num_incorrect)/num_datapts)
+
+print "Making prediction for combined models..."
+num_incorrect = 0
+num_datapts = 0
+for i in range(images_test.shape[0]):
+	true_label = labels_test[i]
+	estimated_label = np.argmax(prb_mat[i])
+	num_datapts += 1
+	if(true_label != estimated_label):
+		num_incorrect += 1
+print "Overall test error: " + str(float(num_incorrect)/num_datapts)
+\end{lstlisting}
+\newpage
+\section{\\Appendix D: Softmax Regression Classification Source Code} \label{App:AppendixD}}
+\begin{lstlisting}
+class SoftmaxClassifier:
+    def __init__(self, _inputs, _labels, _num_classes, _learning_rate=1, 
+    _error_thresh=0.11, _max_iter=1000, _sgd_subset=10000):
+        self.num_classes = _num_classes
+        self.weights = np.random.rand(10, _inputs.shape[1])
+        self.inputs = normalize(_inputs, axis=1, norm='l1')
+        self.labels = _labels
+        self.alpha = _learning_rate
+        self.max_err = _error_thresh
+        self.max_iter = _max_iter 
+        self.sgd_subset = _sgd_subset
+        return
+
+    # PrbLabelTop
+    # Input: 
+    #   x - Input vector (single data point)
+    #   k - The class to compute probability of   
+    # Output:
+    #   Numerator of Float Probability that the image features are of class k
+    def PrbLabelTop(self, x, k):
+        theta_k = self.weights[k]
+        return np.exp(np.dot(theta_k,x))
+
+    # PrbLabelBottom
+    # Input: Same as PrbLabelTop  
+    # Output:
+    #   Denominator of Float Probability of image features for classification
+    def PrbLabelBottom(self, x):
+        return float(np.sum([np.exp(np.dot(theta_i,x)) for theta_i in self.weights]))
+   
+    # PrbLabel
+    # Input: Same as PrbLabelTop  
+    # Output:
+    #   Float Probability of image features for class k
+    def PrbLabel(self, x, k):
+        return self.PrbLabelTop(x,k)/self.PrbLabelBottom(x)
+
+    # prbs
+    # Input: 
+    # Output:
+    #   (1xk) matrix of probabilities of features being in class k
+    def prbs(self, x):
+        prbs = []
+        prbLblBtm = self.PrbLabelBottom(x)
+        for k in range(0, self.num_classes):
+            prbs.append(self.PrbLabelTop(x,k)/prbLblBtm)
+        return prbs
+
+    # Indicator 
+    # Input: 
+    # y_i - the true label
+    # k - the class k
+    # Output:
+    #   Whether or not y_i is class k, 1 if true 0 otherwise
+    def Indicator(self, y_i, k):
+        if(y_i == k):
+            return 1
+        return 0
+
+    # kStochasticCost
+    # Input: 
+    # k - the class k
+    # inputs_labels_subset - subset of the inputs and corresponding labels
+    # Output:
+    #   Gradient of weights for class k
+    def kStochasticCost(self, k, inputs, labels):
+        return -1*np.sum([x*(self.Indicator(y,k)-self.PrbLabel(x,k)) for 
+        (x,y) in zip(inputs,labels)], axis=0)
+
+    # costStochasticMat
+    # Output:
+    #   Array of kCost for each class k
+    def costStochasticMat(self, n): 
+        costAry = []
+        randNdxList = np.random.randint(0, self.inputs.shape[0], n)
+        inputs_subset = []
+        labels_subset = []
+        for ndx in randNdxList:
+            inputs_subset.append(self.inputs[ndx])
+            labels_subset.append(int(self.labels[ndx]))
+        for k in range(0, self.num_classes):
+            costAry.append(self.kStochasticCost(k, inputs_subset, labels_subset))
+        return costAry
+
+    # updateWeights
+    # Updates the weights using gradient descent
+    def updateWeights(self):
+        print "Updating Weights"
+        self.weights = self.weights - 
+        np.multiply(self.alpha,self.costStochasticMat(self.sgd_subset))
+
+    # updateWeights
+    # Training error as ratio of number of correct predictions 
+    # over size of training set
+    def calcTrainingError(self):
+        print "Calculating Training Error"
+        return 1-float(np.sum([self.Indicator(y, 
+        np.argmax(self.prbs(x))) 
+        for (x,y) in zip(self.inputs, self.labels)]))/self.inputs.shape[0]
+
+    # train
+    # Train the softmax classifier using gradient descent
+    def train(self):
+        print "Training..."
+        cur_iter = 0
+        cur_error = 1.1
+        out_file = open("softmax_train_errors.txt", "w+")
+        while cur_error > self.max_err and cur_iter < self.max_iter:
+            cur_iter += 1
+            print "On iteration " + str(cur_iter)
+            self.updateWeights()
+            cur_error = self.calcTrainingError()
+            print "Error so far: " + str(cur_error)
+            print str(cur_iter) + " " + str(cur_error) + "\n"
+            out_file.write(str(cur_iter) + " " + str(cur_error) + "\n")
+        print "Done."
+        if(cur_iter >= self.max_iter):
+            print "Iterations exceeded threshold"
+        print "Training Error: " + str(cur_error) 
+        out_file.close()
+        return
+
+    # predict
+    # Use a trained softmax classifier to predict class k for set of 
+    # features
+    def predict(self, features):
+        softmax_ary = self.prbs(features)
+        return np.argmax(softmax_ary)
+
+
+######################################################################
+## Softmax Classifier Usage :: Digit Recognition
+######################################################################
+
+print "Loading Training Data..."
+images_train, labels_train = load_mnist('training')
+print "Done."
+
+sc = SoftmaxClassifier(images_train, labels_train, 10)
+sc.train()
+
+print "Loading Testing Data..."
+images_test, labels_test = load_mnist('testing')
+images_test_norm = normalize(images_test, axis=1, norm='l1')
+print "Done."
+
+print "Making predictions on Test Set..."
+num_mistakes = 0
+num_tests = 0
+for x, y in zip(images_test_norm, labels_test):
+    num_tests += 1
+    y = int(y)
+    y_hat = sc.predict(x)
+    if(y_hat != y):
+        num_mistakes += 1
+test_error = float(num_mistakes)/float(num_tests)
+print "Total Prediction Error: " + str(test_error)
+\end{lstlisting}
+
+
+\end{spacing}
+\end{document}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------%
+% The following is copyright and licensing information for
+% redistribution of this LaTeX source code; it also includes a liability
+% statement. If this source code is not being redistributed to others,
+% it may be omitted. It has no effect on the function of the above code.
+%----------------------------------------------------------------------%
+% Copyright (c) 2007, 2008, 2009, 2010, 2011 by Theodore P. Pavlic
+%
+% Unless otherwise expressly stated, this work is licensed under the
+% Creative Commons Attribution-Noncommercial 3.0 United States License. To
+% view a copy of this license, visit
+% http://creativecommons.org/licenses/by-nc/3.0/us/ or send a letter to
+% Creative Commons, 171 Second Street, Suite 300, San Francisco,
+% California, 94105, USA.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+% OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+% MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+% IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+% CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+% TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+%----------------------------------------------------------------------%

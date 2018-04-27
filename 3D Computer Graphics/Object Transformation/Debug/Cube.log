@@ -1,0 +1,26 @@
+﻿Build started 2/14/2015 5:32:18 PM.
+     1>Project "C:\Users\Joshs\Desktop\Life\Educational\Archives\CSE 167\Cube\Cube.vcxproj" on node 2 (Build target(s)).
+       Project file contains ToolsVersion="12.0". This toolset may be unknown or missing, in which case you may be able to resolve this by installing the appropriate version of MSBuild, or the build may have been forced to a particular ToolsVersion for policy reasons. Treating the project as if it had ToolsVersion="4.0". For more information, please see http://go.microsoft.com/fwlink/?LinkId=291333.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\glut\glut-3.7.6-bin" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt cube.cpp main.cpp Matrix4.cpp Vector3.cpp Vector4.cpp window.cpp
+         window.cpp
+         Vector4.cpp
+         Vector3.cpp
+         Matrix4.cpp
+         main.cpp
+         cube.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Debug\Cube.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\glut\glut-3.7.6-bin" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Debug\Cube.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Debug\Cube.lib" /MACHINE:X86 /SAFESEH Debug\cube.obj
+         Debug\main.obj
+         Debug\Matrix4.obj
+         Debug\Vector3.obj
+         Debug\Vector4.obj
+         Debug\window.obj
+     1>cube.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+         Cube.vcxproj -> C:\Users\Joshs\Desktop\Life\Educational\Archives\CSE 167\Cube\Debug\Cube.exe
+     1>Done Building Project "C:\Users\Joshs\Desktop\Life\Educational\Archives\CSE 167\Cube\Cube.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:12.02

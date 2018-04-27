@@ -1,0 +1,37 @@
+//============================================================================
+// Name        : Minesweeper.cpp
+// Author      : Joshua Wheeler
+// Version     : Comsc 140 -> C++
+// Date  	   : March 20, 2013
+// Description : A Program where the user may input a minesweeper game and then output
+// a map of the Minesweeper answer key
+//============================================================================
+
+#include <iostream>
+using namespace std;
+
+class MineSweeper {
+public:
+	MineSweeper(){
+		row_num = 0;
+		col_num = 0;
+		numCells = row_num*col_num;
+		game_number = 0;
+	};//constructor initializes 0 rows, 0 columns, empty cell set
+	void setSize(int rows, int cols);
+	void setSweeperCells(char sweeperCells[]);
+	void drawGame(); //calculates output from sweeper cell input.
+	void run(); //Start running minesweeper games. Game ends on input 0 0 for num rows and cols.
+	void newGame(); //Initializes a new game
+private:
+	int game_number;
+	int row_num;
+	int col_num; //zero based rows and columns
+	int numCells;
+	char sweeperCells[]; //must be either '.' or '*'
+};
+
+int main() {
+	cout << "Hello World!" << endl; // prints Hello World!
+	return 0;
+}

@@ -1,0 +1,26 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\Joshs\Desktop\LabTwoVerilog\simulation\modelsim
+vDFF_EN_WO_SQ
+!i10b 1
+!s100 Q;JNn2f;LUHID:KA1^TAR3
+ILJoXT:NgV@<PP9H]PQb:E2
+VOlo;H]]P?BdAJD7994D`H2
+Z1 dC:\Users\Joshs\Desktop\LabTwoVerilog\simulation\modelsim
+w0
+8C:/Users/Joshs/Desktop/LabTwoVerilog/Multiplier.v
+FC:/Users/Joshs/Desktop/LabTwoVerilog/Multiplier.v
+L0 78
+OV;L;10.1d;51
+r1
+!s85 0
+31
+!s108 1391114883.732000
+!s107 C:/Users/Joshs/Desktop/LabTwoVerilog/Multiplier.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Joshs/Desktop/LabTwoVerilog|C:/Users/Joshs/Desktop/LabTwoVerilog/Multiplier.v|
+!s101 -O0
+o-vlog01compat -work work -O0
+!s92 -vlog01compat -work work +incdir+C:/Users/Joshs/Desktop/LabTwoVerilog -O0
+n@d@f@f_@e@n_@w@o_@s@q

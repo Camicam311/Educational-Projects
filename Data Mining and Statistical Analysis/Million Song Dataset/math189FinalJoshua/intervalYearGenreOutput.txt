@@ -1,0 +1,55 @@
+----------------------------------------------
+YEAR 2001 - 2006: rock:19,  metal:9,  blues:7,  hop:6,  rap:6,  house:5,  punk:5,  pop:5,  vocalist:2,  disco:2,  funk:2,  soul:2,  hardcore:2,  country:2,  soundtrack:2,  singer-songwriter:2,  electro:2,  2007:2,  
+----------------------------------------------
+YEAR 1994 - 1999: rock:22,  pop:8,  jazz:4,  fusion:3,  beat:3,  trance:3,  house:3,  vocal:2,  folk:2,  electronic:2,  oldies:2,  europop:2,  ballad:2,  disco:2,  soul:2,  
+----------------------------------------------
+YEAR 1988 - 1993: rock:41,  country:8,  pop:5,  blues:3,  electronic:3,  singer-songwriter:3,  soul:2,  psychedelic:2,  experimental:2,  blues-rock:2,  rockabilly:2,  americana:2,  folk:2,  
+----------------------------------------------
+YEAR 2007 - 2012: jazz:7,  house:5,  rock:4,  soul:4,  funk:4,  music:3,  beat:3,  hop:2,  electronic:2,  downtempo:2,  breakbeat:2, 
+Users-Computer-3:PythonSrc user$ rm -f  test.txt | python create_genre_df.py ../../data/C/C/C/ test.txt
+found 49 H5 files.
+
+----------------------------------------------
+YEAR 1988 - 1993: rock:41,  country:8,  pop:5,  blues:3,  electronic:3,  singer-songwriter:3,  soul:2,  psychedelic:2,  experimental:2,  blues-rock:2,  rockabilly:2,  americana:2,  folk:2,  
+----------------------------------------------
+YEAR 1994 - 1999: rock:22,  pop:8,  jazz:4,  fusion:3,  beat:3,  trance:3,  house:3,  vocal:2,  folk:2,  electronic:2,  oldies:2,  europop:2,  ballad:2,  disco:2,  soul:2,  
+----------------------------------------------
+YEAR 2001 - 2006: rock:19,  metal:9,  blues:7,  hop:6,  rap:6,  house:5,  punk:5,  pop:5,  vocalist:2,  disco:2,  funk:2,  soul:2,  hardcore:2,  country:2,  soundtrack:2,  singer-songwriter:2,  electro:2,  2007:2,  
+----------------------------------------------
+YEAR 2007 - 2012: jazz:7,  house:5,  rock:4,  soul:4,  funk:4,  music:3,  beat:3,  hop:2,  electronic:2,  downtempo:2,  breakbeat:2, 
+Users-Computer-3:PythonSrc user$ rm -f  test.txt | python create_genre_df.py ../../data/C/C/C/ test.txt
+found 49 H5 files.
+
+----------------------------------------------
+YEAR 2007 - 2012: jazz:7,  house:5,  rock:4,  soul:4,  funk:4,  music:3,  beat:3,  hop:2,  electronic:2,  downtempo:2,  breakbeat:2,  
+----------------------------------------------
+YEAR 2001 - 2006: rock:19,  metal:9,  blues:7,  hop:6,  rap:6,  house:5,  punk:5,  pop:5,  vocalist:2,  disco:2,  funk:2,  soul:2,  hardcore:2,  country:2,  soundtrack:2,  singer-songwriter:2,  electro:2,  2007:2,  
+----------------------------------------------
+YEAR 1994 - 1999: rock:22,  pop:8,  jazz:4,  fusion:3,  beat:3,  trance:3,  house:3,  vocal:2,  folk:2,  electronic:2,  oldies:2,  europop:2,  ballad:2,  disco:2,  soul:2,  
+----------------------------------------------
+YEAR 1988 - 1993: rock:41,  country:8,  pop:5,  blues:3,  electronic:3,  singer-songwriter:3,  soul:2,  psychedelic:2,  experimental:2,  blues-rock:2,  rockabilly:2,  americana:2,  folk:2, 
+Users-Computer-3:PythonSrc user$ rm -f  test.txt | python create_genre_df.py ../../data/ test.txt
+found 6050 H5 files.
+
+----------------------------------------------
+YEAR 2008 - 2013: rock:16,  jazz:6,  pop:3,  punk:2,  metal:2,  fusion:2,  funk:2,  
+----------------------------------------------
+YEAR 2002 - 2007: rock:23,  metal:19,  trance:6,  house:4,  pop:4,  punk:3,  jazz:3,  comedy:3,  electronic:3,  ambient:2,  hardcore:2,  dance:2,  ska:2,  electro:2,  music:2,  reggae:2,  electronica:2,  
+----------------------------------------------
+YEAR 1996 - 2001: rock:25,  pop:11,  jazz:9,  rap:5,  house:3,  music:3,  hop:3,  country:2,  acoustic:2,  electronic:2,  funk:2,  
+----------------------------------------------
+YEAR 1990 - 1995: rock:21,  jazz:7,  pop:5,  hop:5,  rap:4,  house:2,  dance:2,  coast:2,  flamenco:2,  folk:2,  guitar:2,  disco:2,  ballad:2,  blues-rock:2,  funk:2,  chanson:2,  soul:2,  piano:2,  
+----------------------------------------------
+YEAR 1984 - 1989: rock:44,  pop:15,  jazz:12,  disco:5,  funk:4,  hop:4,  trance:3,  house:3,  beat:3,  downtempo:3,  blues-rock:3,  ballad:3,  country:2,  electro:2,  electronic:2,  ambient:2,  chill-out:2,  vocal:2,  soul:2,  wave:2,  vocalist:2,  
+----------------------------------------------
+YEAR 1978 - 1983: rock:26,  metal:10,  punk:9,  house:7,  pop:5,  techno:4,  jazz:3,  wave:3,  hop:2,  alternative:2,  80s:2,  funk:2,  blues:2,  ska:2,  states:2,  breakbeat:2,  electro:2,  downtempo:2,  electronic:2,  dub:2,  
+----------------------------------------------
+YEAR 1972 - 1977: rock:42,  blues:7,  soul:6,  house:5,  jazz:4,  pop:4,  punk:4,  r&b:3,  disco:3,  trance:3,  music:2,  blues-rock:2,  funk:2,  oldies:2,  soundtrack:2,  metal:2,  reggae:2,  wave:2,  
+----------------------------------------------
+YEAR 1966 - 1971: rock:29,  blues:13,  soul:10,  jazz:6,  pop:5,  ballad:5,  singer-songwriter:3,  motown:2,  doo-wop:2,  blues-rock:2,  r&b:2,  disco:2,  funk:2,  listening:2,  
+----------------------------------------------
+YEAR 1960 - 1965: rock:23,  jazz:13,  soul:8,  blues:6,  music:5,  oldies:3,  country:3,  folk:3,  doo-wop:3,  states:3,  vocalist:2,  motown:2,  singer-songwriter:2,  bluegrass:2,  ballad:2,  funk:2,  pop:2,  listening:2,  punk:2,  piano:2,  
+----------------------------------------------
+YEAR 1954 - 1959: rock:16,  jazz:13,  blues:9,  pop:5,  country:5,  soul:4,  blues-rock:3,  rockabilly:3,  music:2,  piano:2,  vocal:2,  classical:2,  guitar:2,  classic:2,  
+----------------------------------------------
+YEAR 1948 - 1953: blues:8,  country:6,  jazz:6,  swing:5,  rock:5,  music:4,  pop:4,  vocal:3,  oldies:3,  vocalist:3,  cowboy:2,  folk:2,  listening:2,  ballad:2,  soul:2, 
