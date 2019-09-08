@@ -1,0 +1,6 @@
+extern int p;
+
+function : void main()
+{
+    cout << p << endl;
+}

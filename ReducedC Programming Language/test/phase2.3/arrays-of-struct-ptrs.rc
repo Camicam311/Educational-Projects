@@ -1,0 +1,32 @@
+structdef S
+{
+    int a;
+    float b;
+    bool c;
+    float d, e;
+    int f, g, h;
+};
+
+typedef S* SPTR;
+
+SPTR[10] a;
+
+function : void main()
+{
+    S[10] b;
+
+    int i = 0;
+    while( i < 10 )
+    {
+        a[i] = &b[i];
+        i++;
+    }
+
+    a[4]->d = 11.12;
+
+    cout << a[4]->d << endl;
+    float* ff = &(a[4]->d);
+
+    *ff = 99.94;
+    cout << a[4]->d << endl;
+}

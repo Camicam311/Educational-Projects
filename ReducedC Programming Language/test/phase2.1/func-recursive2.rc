@@ -1,0 +1,18 @@
+int a = 5;
+
+function : int foo()
+{
+    a--;
+    cout << a << endl;
+    if( a == 0 )
+    {
+        return 0;
+    }
+    int b = a;
+    return b + foo();
+}
+
+function : void main()
+{
+    cout << foo() << endl;
+}

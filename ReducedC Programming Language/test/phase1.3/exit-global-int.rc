@@ -1,0 +1,4 @@
+int a = 1;
+function : void main(){
+	exit(a);
+}

@@ -1,0 +1,25 @@
+typedef funcptr : int (int a) INTFUNC;
+
+function : int addTen( int x )
+{
+    return x + 10;
+}
+
+function : int addFive( int x )
+{
+    return x + 5;
+}
+
+INTFUNC func;
+
+function : void main()
+{
+    int a = 15;
+    func = addTen;
+
+    cout << func(a) << endl;
+
+    func = addFive;
+
+    cout << func(a) << endl;
+}

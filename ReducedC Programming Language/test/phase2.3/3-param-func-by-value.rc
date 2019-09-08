@@ -1,0 +1,36 @@
+function : int foo( int a, float b, bool c )
+{
+    cout << "entered foo" << endl;
+    cout << a << endl;
+    cout << b << endl;
+    cout << c << endl;
+    cout << "assigning" << endl;
+
+    a = 1;
+    b = 3.21;
+    c = true;
+
+    cout << "finished assigning" << endl;
+    cout << a << endl;
+    cout << b << endl;
+    cout << c << endl;
+    cout << "returning" << endl;
+
+    return 3;
+}
+
+function : void main()
+{
+    cout << "in main" << endl;
+    int h = -9;
+    float i = 5.55;
+    bool j = false;
+
+    cout << "calling foo" << endl;
+    cout << foo( h, i, j ) << endl;
+    cout << "back from foo" << endl;
+    cout << h << endl;
+    cout << i << endl;
+    cout << j << endl;
+    cout << "done" << endl;
+}

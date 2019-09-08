@@ -1,0 +1,14 @@
+function : void main()
+{
+    float[10] aa;
+    int i = 0;
+    float* a = &aa[0];
+
+    while( i < 10 )
+    {
+        aa[i] = i * 2.3;
+        cout << *a << endl;
+        i++;
+        a++;
+    }
+}

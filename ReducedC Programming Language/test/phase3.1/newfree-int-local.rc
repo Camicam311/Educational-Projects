@@ -1,0 +1,10 @@
+function : void main(){
+	int * a;
+	int * b;
+	new a;
+	cout << a == b << endl;
+	*a = 666;
+	cout << *a << endl;
+	delete a;
+	cout << a << endl;
+}

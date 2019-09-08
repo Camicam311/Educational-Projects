@@ -1,0 +1,4 @@
+const int a = 5;
+function : void main(){
+    cout << a+10 << endl;
+}

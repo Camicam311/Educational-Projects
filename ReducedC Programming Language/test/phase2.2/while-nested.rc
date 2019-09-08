@@ -1,0 +1,15 @@
+function : void main()
+{
+    int a = 0;
+    while( a < 5 )
+    {
+        int b = -5;
+        while( b < 0 )
+        {
+            b++;
+            cout << b << endl;
+        }
+        a++;
+        cout << a << endl;
+    }
+}

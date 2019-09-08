@@ -1,0 +1,14 @@
+int g;
+
+function : int& a()
+{
+    return g;
+}
+
+function : void main()
+{
+    g = 5;
+    cout << g << endl;
+    a() = 10;
+    cout << g << endl;
+}

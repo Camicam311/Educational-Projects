@@ -1,0 +1,16 @@
+function : void main()
+{
+    static int i = 0;
+    static int j;
+    static float k = 2.0;
+    static bool m = false;
+	static const int n = 0;
+	static const float o = 2.0;
+	static const bool p = true;
+	cout<<i<<endl;
+	cout<<k<<endl;
+	cout<<m<<endl;
+	cout<<n<<endl;
+	cout<<o<<endl;
+	cout<<p<<endl;
+}

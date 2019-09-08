@@ -1,0 +1,16 @@
+structdef S
+{
+    int a;
+    float b;
+    bool c;
+    float d, e;
+    int f, g, h;
+};
+
+S[10] a;
+
+function : void main()
+{
+    a[4].d = 456.78;
+    cout << a[4].d << endl;
+}

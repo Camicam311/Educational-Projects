@@ -1,0 +1,8 @@
+int* p;
+
+function : void main()
+{
+    cout << "goin' down swingin!" << endl;
+    (*p)++;
+    cout << "this should not print" << endl;
+}

@@ -1,0 +1,22 @@
+function : void foo( int* a, int size )
+{
+    while( size > 0 )
+    {
+        size--;
+        cout << a[size] << endl;
+    }
+}
+
+function : void main()
+{
+    int[10] aa;
+    int i = 0;
+
+    while( i < 10 )
+    {
+        aa[i] = i;
+        i++;
+    }
+
+    foo(aa, i);
+}

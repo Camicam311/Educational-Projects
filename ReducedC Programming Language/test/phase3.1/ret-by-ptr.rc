@@ -1,0 +1,15 @@
+int g;
+
+function : int* a()
+{
+    return &g;
+}
+
+function : void main()
+{
+    g = 5;
+    cout << g << endl;
+    int* b = a();
+    *b = 10;
+    cout << g << endl;
+}

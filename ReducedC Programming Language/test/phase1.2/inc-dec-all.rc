@@ -1,0 +1,14 @@
+function : void main(){
+	int a = 1;
+	int b = 2;
+	float c = 3.33;
+	float d = 4.44;
+	cout << a++ << endl;
+	cout << ++a << endl;
+	cout << b-- << endl;
+	cout << --b << endl;
+	cout << c++ << endl;
+	cout << ++c << endl;
+	cout << d++ << endl;
+	cout << ++d << endl;
+}

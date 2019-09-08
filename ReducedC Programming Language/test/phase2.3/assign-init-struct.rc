@@ -1,0 +1,17 @@
+structdef S
+{
+    int x;
+    bool a;
+    int y;
+    float c;
+};
+
+S s1;
+
+function : void main()
+{
+    s1.x = 535;
+    S s = s1;
+
+    cout << s.x << endl;
+}

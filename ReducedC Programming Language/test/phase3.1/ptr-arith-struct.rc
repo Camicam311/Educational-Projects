@@ -1,0 +1,23 @@
+structdef S
+{
+    float a;
+    bool b;
+    int c;
+};
+
+typedef S[10] TENS;
+
+function : void main()
+{
+    TENS aa;
+    int i = 0;
+    S* a = &aa[0];
+
+    while( i < 10 )
+    {
+        aa[i].a = i * 3242.3;
+        cout << a->a << endl;
+        i++;
+        a++;
+    }
+}

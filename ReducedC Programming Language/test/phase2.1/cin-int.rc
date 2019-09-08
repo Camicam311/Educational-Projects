@@ -1,0 +1,5 @@
+function : void main(){
+	int a;
+	cin >> a;
+	cout << "you inputed: " << a << endl;	
+}

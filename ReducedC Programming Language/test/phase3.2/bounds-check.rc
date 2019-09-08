@@ -1,0 +1,9 @@
+int[3] p;
+
+function : void main()
+{
+    int i = 3;
+    cout << "YOULL NEVER CATCH ME ALIVE COPPERS!!!" << endl;
+    p[i];
+    cout << "this should not print" << endl;
+}

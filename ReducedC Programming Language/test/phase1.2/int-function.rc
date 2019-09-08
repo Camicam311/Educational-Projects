@@ -1,0 +1,13 @@
+function : int foo()
+{
+    cout << "in foo" << endl;
+    return 1;
+}
+
+function : void main()
+{
+    cout << "in main" << endl;
+    int a = foo();
+    cout << a << endl;
+    cout << "back in main" << endl;
+}

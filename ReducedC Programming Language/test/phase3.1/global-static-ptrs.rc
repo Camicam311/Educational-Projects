@@ -1,0 +1,18 @@
+int* p;
+float* q;
+bool* r;
+
+static int* s;
+static float* t;
+static bool* u;
+
+function : void main()
+{
+    // should all print 0
+    cout << p << endl;
+    cout << q << endl;
+    cout << r << endl;
+    cout << s << endl;
+    cout << t << endl;
+    cout << u << endl;
+}

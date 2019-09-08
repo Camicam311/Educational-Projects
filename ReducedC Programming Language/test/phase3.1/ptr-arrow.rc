@@ -1,0 +1,22 @@
+structdef S
+{
+    int a;
+    float b;
+    bool c;
+};
+
+S* v;
+static S* w;
+
+function : void main()
+{
+    S a, b;
+    a.a = 12345;
+    b.b = 6789.10;
+
+    v = &a;
+    w = &b;
+
+    cout << v->a << endl;
+    cout << w->b << endl;
+}

@@ -1,0 +1,7 @@
+function : void main()
+{
+    int[10] x;
+    x[4] = 3;
+
+    cout << x[4] << endl;
+}

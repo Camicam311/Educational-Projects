@@ -1,0 +1,10 @@
+float * a;
+float * b;
+function : void main(){
+	new a;
+	cout << a == b << endl;
+	*a = 6.66;
+	cout << *a << endl;
+	delete a;
+	cout << a << endl;
+}

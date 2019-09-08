@@ -1,0 +1,20 @@
+structdef S
+{
+    int a;
+    float b;
+};
+
+function : void foo( S& a )
+{
+    cout << a.a << endl;
+    cout << a.b << endl;
+}
+
+function : void main()
+{
+    S aa;
+    aa.a = 7439;
+    aa.b = 4824924.42;
+
+    foo(aa);
+}

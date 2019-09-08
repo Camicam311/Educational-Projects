@@ -1,0 +1,5 @@
+int a = 1;
+function : void main(){
+	exit(a);
+    cout << "this should not print" << endl;
+}

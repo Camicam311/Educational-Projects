@@ -1,0 +1,22 @@
+function : void foo( int &a, float &b, bool &c){
+	a = 3;
+	b = 4.44;
+	c = false;
+}
+
+function : void foo2( int a, float b, bool c){
+	a = 5;
+	b = 6.66;
+	c = true;
+}
+
+function : void main(){
+	int a = 1;
+	float b = 2.22;
+	bool c = true;
+	cout << a << b << c << endl;
+	foo(a, b, c);
+	cout << a << b << c << endl;
+	foo2(a, b, c);
+	cout << a << b << c << endl;
+}

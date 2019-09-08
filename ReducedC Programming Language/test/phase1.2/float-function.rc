@@ -1,0 +1,13 @@
+function : float foo()
+{
+    cout << "in foo" << endl;
+    return 3.2;
+}
+
+function : void main()
+{
+    cout << "in main" << endl;
+    float a = foo();
+    cout << a << endl;
+    cout << "back in main" << endl;
+}

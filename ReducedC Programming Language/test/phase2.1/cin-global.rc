@@ -1,0 +1,7 @@
+int a;
+
+function : void main()
+{
+    cin >> a;
+    cout << a;
+}

@@ -1,0 +1,7 @@
+int a = 2;
+
+function : void main()
+{
+    int a = 3;
+    cout << ::a << endl;
+}

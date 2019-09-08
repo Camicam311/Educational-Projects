@@ -1,0 +1,6 @@
+function : void nest(){
+	exit(0);
+}
+function : void main(){
+	nest();
+}

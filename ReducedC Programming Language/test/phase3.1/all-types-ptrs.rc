@@ -1,0 +1,46 @@
+int* p;
+float* q;
+bool* r;
+
+static int* s;
+static float* t;
+static bool* u;
+
+structdef S
+{
+    int a;
+    float b;
+    bool c;
+};
+
+S* v;
+static S* w;
+
+function : void main()
+{
+    int a = 2, b = 3;
+    float c = 4.2, d = 5.2;
+    bool e = true, f = false;
+
+    S g, h;
+    g.a = 99;
+    h.b = 42.42;
+
+    p = &a;
+    q = &c;
+    r = &e;
+    s = &b;
+    t = &d;
+    u = &f;
+    v = &g;
+    w = &h;
+
+    cout << *p << endl;
+    cout << *q << endl;
+    cout << *r << endl;
+    cout << *s << endl;
+    cout << *t << endl;
+    cout << *u << endl;
+    cout << (*v).a << endl;
+    cout << (*w).b << endl;
+}

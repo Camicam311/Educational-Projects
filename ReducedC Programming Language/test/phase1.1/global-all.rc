@@ -1,0 +1,18 @@
+int a = 1;
+float b = 2.0;
+bool c = true;
+const int d = 3;
+const float e = 4.0;
+const bool f = false;
+static const int g = 5;
+static const float h = 6.0;
+static const bool i = true;
+auto j = 7;
+auto k = 8.0;
+auto l = false;
+static const auto m = 9;
+static const auto n = 10.0;
+static const auto o = true;
+function : void main(){
+	cout<<a<<b<<c<<d<<e<<f<<g<<h<<i<<j<<k<<l<<m<<n<<o<<endl;
+}

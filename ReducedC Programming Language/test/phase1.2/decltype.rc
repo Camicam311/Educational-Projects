@@ -1,0 +1,7 @@
+function : void main()
+{
+    int a = 3;
+    int c = 2;
+    decltype(a = c) b = a;
+    cout << b << endl;
+}

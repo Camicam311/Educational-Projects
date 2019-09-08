@@ -1,0 +1,11 @@
+function : bool foo()
+{
+    cout << "this should be printed" << endl;
+    return true;
+}
+
+function : void main()
+{
+    bool a = true;
+    cout << (a && foo()) << endl;
+}

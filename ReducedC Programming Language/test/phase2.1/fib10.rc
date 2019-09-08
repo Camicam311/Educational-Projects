@@ -1,0 +1,14 @@
+function : int fib( int b )
+{
+    if( b == 2 || b == 1 )
+    {
+        return 1;
+    }
+
+    return fib(b-1) + fib(b-2);
+}
+
+function : void main()
+{
+    cout << fib(10) << endl;
+}

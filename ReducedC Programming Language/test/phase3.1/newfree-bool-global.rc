@@ -1,0 +1,10 @@
+bool * a;
+bool * b;
+function : void main(){
+	new a;
+	cout << a == b << endl;
+	*a = true;
+	cout << *a << endl;
+	delete a;
+	cout << a << endl;
+}

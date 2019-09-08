@@ -1,0 +1,52 @@
+const bool a = true;
+const bool b = false;
+
+function : void main()
+{
+    bool c = true;//a || b; // true (short circuit)
+    bool d = false;//a && b; // false
+    bool e = true;//c != b; // true
+
+    if( a )
+    {
+        cout << "good1" << endl;
+        if( b )
+        {
+            cout << "bad1" << endl;
+            if( c )
+            {
+                cout << "bad2" << endl;
+            }
+        }
+        else
+        {
+            cout << "good2" << endl;
+            if( e )
+            {
+                cout << "good3" << endl;
+            }
+            else
+            {
+                cout << "bad3" << endl;
+            }
+        }
+
+        if( d )
+        {
+            cout << "bad4" << endl;
+        }
+        else
+        {
+            cout << "good4" << endl;
+        }
+    }
+
+    if( d )
+    {
+        cout << "bad5" << endl;
+    }
+    else
+    {
+        cout << "good5" << endl;
+    }
+}
